@@ -1379,8 +1379,8 @@ void main(){float r=length(gl_PointCoord-vec2(0.5))*2.0;float a=(1.0-smoothstep(
     const box = rootEl && rootEl.querySelector('#mapbox'), dot = box && box.querySelector(`.apoyo[data-id="${CSS.escape(id)}"] .dot`);
     if (!box || !dot || MX.reduced() || !box.animate) return MX.go('#/apoyo/' + id);
     const r = box.getBoundingClientRect(), m = dot.getBoundingClientRect(), mx = m.x + m.width / 2, my = m.y + m.height / 2;
-    const vis = Math.max(0, Math.min(r.bottom, innerHeight) - Math.max(r.top, 0)) / r.height;
-    if (vis < .6 || mx < 0 || my < 0 || mx > innerWidth || my > innerHeight) return MX.go('#/apoyo/' + id);   // mapa fuera de pantalla: transición normal
+    // solo se salta el zoom si la torre no se ve en pantalla (p. ej. se abre desde la lista con el mapa fuera de vista); con la ventana baja el mapa puede verse cortado y aun así hay efecto
+    if (mx < Math.max(24, r.left + 8) || my < Math.max(24, r.top + 8) || mx > Math.min(innerWidth - 24, r.right - 8) || my > Math.min(innerHeight - 24, r.bottom - 8)) return MX.go('#/apoyo/' + id);
     const ox = mx - r.x, oy = my - r.y, ct = document.createElement('div'); ct.id = 'dive';
     ct.style.cssText = `left:${r.x}px;top:${r.y}px;width:${r.width}px;height:${r.height}px`;
     const inner = box.cloneNode(true); inner.removeAttribute('id'); inner.querySelectorAll('.tip,.mapleg,.mapramp,.chip,#selg').forEach(n => n.remove());
