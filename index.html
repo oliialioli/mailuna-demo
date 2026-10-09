@@ -415,6 +415,10 @@ tbody tr{transition:background .2s;cursor:pointer}tbody tr:hover{background:#faf
 .modal.on .mcard{transform:none}.mcard h3{font:300 30px/1.1 var(--sans);letter-spacing:-.03em;margin:6px 0 8px}.mlead{font-size:14px;color:var(--g1);margin-bottom:18px;line-height:1.45}
 .mfld{margin-bottom:16px}.mfld>label{display:block;font:500 9.5px var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--g1);margin-bottom:8px}
 .mfld select,.mfld input[type=date]{width:100%;height:44px;border-radius:12px;border:1px solid #d6d6d1;background:#fff;padding:0 14px;font:inherit;font-size:14px}
+.mfld select{appearance:none;-webkit-appearance:none;padding-right:44px;background:#fff url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 16 16' fill='none' stroke='%23141414' stroke-width='1.6' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M3.5 6l4.5 4.5L12.5 6'/%3E%3C/svg%3E") no-repeat right 14px center/16px 16px}
+.mfld input[type=date]{padding:0 14px}
+.mfld input[type=date]::-webkit-datetime-edit{padding:0}.mfld input[type=date]::-webkit-datetime-edit-fields-wrapper{padding:0}
+.mfld input[type=date]::-webkit-calendar-picker-indicator{margin:0;padding:0;width:16px;height:16px;cursor:pointer}
 .mact{display:flex;justify-content:flex-end;gap:10px;margin-top:22px}
 .radios,.checks{display:grid;gap:8px}.checks{grid-template-columns:1fr 1fr}
 .rd,.ck{display:flex;align-items:center;gap:10px;padding:11px 14px;border-radius:12px;background:var(--field);cursor:pointer;font-size:14px;transition:background .2s}
@@ -1282,19 +1286,22 @@ void main(){float r=length(gl_PointCoord-vec2(0.5))*2.0;float a=(1.0-smoothstep(
         ${ghosts}${marks}<g id="selg"></g></svg><div class="tip"></div>`);
       const svg = box.querySelector('svg'), selg = svg.querySelector('#selg'), tip = box.querySelector('.tip');
 
+      /* el SVG se recorta (slice) según la proporción de la tarjeta: el rótulo debe quedar dentro de la parte visible */
+      const vis = () => { const bw = box.clientWidth, bh = box.clientHeight; if (!bw || !bh) return { x0: 0, y0: 0, w: W, h: H }; const k = Math.max(bw / W, bh / H), vw = bw / k, vh = bh / k; return { x0: (W - vw) / 2, y0: (H - vh) / 2, w: vw, h: vh }; };
       function drawSel() {
-        const a = D.byId[selected]; if (!a) return; const [x, y] = P[a.id];
-        const txt = MX.calloutText(a), w = txt.length * 6.6 + 42, bg = a.st === 2 ? ACC : a.st === 1 ? TINT : '#d6d6d1'; const fg = a.st === 2 ? '#fff' : '#141414';
-        const cy = Math.min(y + 76, H - 70);
+        const a = D.byId[selected]; if (!a) return; const [x, y] = P[a.id], v = vis();
+        const txt = MX.calloutText(a), w = txt.length * 6.9 + 42, bg = a.st === 2 ? ACC : a.st === 1 ? TINT : '#d6d6d1'; const fg = a.st === 2 ? '#fff' : '#141414';
+        const cy = Math.min(y + 76, v.y0 + v.h - 70);
         selg.innerHTML = `<circle cx="${x}" cy="${y}" r="19" fill="none" stroke="${a.st === 2 ? ACC : TINT}" stroke-width="1.5" stroke-opacity=".9"/>
           <line x1="${x}" y1="${y + 19}" x2="${x}" y2="${cy}" stroke="${a.st === 2 ? ACC : TINT}" stroke-width="1"/>
-          <g class="callout" transform="translate(${Math.max(8, Math.min(W - w - 8, x - w / 2))},${cy})"><rect width="${w}" height="30" rx="4" fill="${bg}"/>
+          <g class="callout" transform="translate(${Math.max(v.x0 + 8, Math.min(v.x0 + v.w - w - 8, x - w / 2))},${cy})"><rect width="${w}" height="30" rx="4" fill="${bg}"/>
             <text x="12" y="19.5" font-family="DM Mono,monospace" font-weight="500" font-size="10" letter-spacing=".9" fill="${fg}">${MX.esc(txt)}</text>
             <text x="${w - 20}" y="19.5" font-family="DM Mono,monospace" font-size="11" fill="${fg}">→</text></g>`;
         selg.querySelector('.callout').addEventListener('click', () => opt.onOpen && opt.onOpen(a.id));
         svg.querySelectorAll('.apoyo').forEach(g => g.classList.toggle('sel', g.dataset.id === selected));
       }
       drawSel();
+      if (window.ResizeObserver) { let lw = box.clientWidth, lh = box.clientHeight; new ResizeObserver(() => { if (box.clientWidth !== lw || box.clientHeight !== lh) { lw = box.clientWidth; lh = box.clientHeight; drawSel(); } }).observe(box); }
 
       const place_tip = (id, e) => {
         const a = D.byId[id], rect = box.getBoundingClientRect(), m = a.issues[0];
@@ -1432,7 +1439,7 @@ void main(){float r=length(gl_PointCoord-vec2(0.5))*2.0;float a=(1.0-smoothstep(
         ${seg([[D.nAct, ACC, TR(ACC, `${D.nAct} avisos en actuar`, 'Requieren intervención', 'Apoyos: ' + idsA())], [D.nVig, TINT, TR(TINT, `${D.nVig} avisos en vigilar`, 'Seguimiento en la próxima inspección', 'Apoyos: ' + idsV())]])}
         <div class="foot"><span class="dotl" style="--c:${ACC}">${D.nAct} actuar</span><span class="dotl" style="--c:${TINT}">${D.nVig} vigilar</span></div></div>
       ${insp || apo}
-      ${proj}
+      ${MX.kmCard() || proj}
       ${M.net ? ord : desv}
     </section>`;
     const head = `<div class="pghead"><div><h1>Estado de la red</h1><p>${M.line} · ${D.n} ${MX.pl(D.n, 'apoyo', 'apoyos')} · ${M.demo ? 'último vuelo ' + M.flight : 'informe ' + MX.esc(MX.state.name)}</p></div>
@@ -1541,6 +1548,12 @@ ${rankBody}</div>`;
   const MX = (window.MX = window.MX || {});
   const ACC = '#ff6a2b', TINT = '#ffad8a', OKC = '#d6d6d1', HOY = '#ff6a2b', PROG = '#ffad8a';   // ACC/TINT = Actuar/Vigilar · HOY/PROG = estados de vuelo y orden
   const A = MX.tipAttr, TR = MX.tipRow, esc = MX.esc;
+  /* tarjeta «Km volados» (solo con los datos de ejemplo): se usa en el panel y en Vuelos */
+  MX.kmCard = () => { const KM = MX.meta().km; return KM ? `<div class="card kpi"><div class="eyebrow">Km volados · ${KM.month}</div><div class="v"><span class="n">${MX.fi(KM.value)}</span><span class="u">Km</span></div><div class="foot" style="align-items:flex-end"><div class="row-chips">
+          <span class="pillx" data-tip="${A(TR('', `${KM.flights} vuelos en ${KM.month}`, 'Inspecciones LiDAR del mes'))}">${KM.flights} vuelos</span>
+          <span class="pillx" data-tip="${A(TR('', 'Densidad de puntos', 'Media del sensor LIDAR L2'))}">${KM.density} pt/m²</span>
+          <span class="pillx" data-tip="${A(TR('', 'Precisión', 'Error vertical del sensor'))}">±${MX.fm(KM.prec, 2)} m</span></div></div></div>` : ''; };
+
 
   /* ---------- modal genérico ---------- */
   MX.modal = function (inner, mount) {
@@ -1564,11 +1577,7 @@ ${rankBody}</div>`;
     render() {
       const root = MX.$('#s-vuelos'); root.classList.remove('anim'); const D = MX.state.D, F = MX.flights(D), done = F.filter(f => f.estado === 'Completado'), next = F.filter(f => f.estado !== 'Completado');
       const last = done[done.length - 1], hoy = F.find(f => f.estado === 'Hoy');
-      const KM = MX.meta().km;
-      const kmC = KM ? `<div class="card kpi"><div class="eyebrow">Km volados · ${KM.month}</div><div class="v"><span class="n">${MX.fi(KM.value)}</span><span class="u">Km</span></div><div class="foot" style="align-items:flex-end"><div class="row-chips">
-          <span class="pillx" data-tip="${A(TR('', `${KM.flights} vuelos en ${KM.month}`, 'Inspecciones LiDAR del mes'))}">${KM.flights} vuelos</span>
-          <span class="pillx" data-tip="${A(TR('', 'Densidad de puntos', 'Media del sensor LIDAR L2'))}">${KM.density} pt/m²</span>
-          <span class="pillx" data-tip="${A(TR('', 'Precisión', 'Error vertical del sensor'))}">±${MX.fm(KM.prec, 2)} m</span></div></div></div>` : '';
+      const KM = MX.meta().km, kmC = MX.kmCard();
       const kpi = `<section class="grid kpis${KM ? '' : ' k3'}">
         <div class="card kpi"><div class="eyebrow">Último vuelo</div><div class="v"><span class="n" style="font-size:44px">${last.date}</span></div><div class="foot"><span>${last.line} · ${MX.fi(last.pts)} puntos · ${last.avisos} avisos</span></div></div>
         <div class="card kpi"><div class="eyebrow">Próximo vuelo</div><div class="v"><span class="n" style="font-size:44px">${hoy ? 'Hoy' : next[0] ? next[0].date : '—'}</span>${hoy ? '<span class="u">08.10.2026</span>' : ''}</div><div class="foot"><span>${hoy ? hoy.motivo : next[0] ? next[0].motivo : 'Sin vuelos programados'}</span></div></div>
