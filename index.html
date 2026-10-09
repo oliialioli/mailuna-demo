@@ -7,16 +7,16 @@
 <title>Mailuna · demo</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Nata+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='9' fill='%230b0c0c'/%3E%3Ccircle cx='16' cy='16' r='6' fill='%23ff6a2b'/%3E%3C/svg%3E">
 <style>
 /* Mailuna · prototipo demo · tokens del diseño 2 (claro) + glass oscuro del acceso */
 :root{
   --bg:#e8e8e5; --card:#fff; --ink:#141414; --g1:#62625c; --g2:#6e6e68; --track:#ecebe6; --div:#e4e4e0; --field:#f3f3f1; --pill:#deded9;
   --acc:#ff6a2b; --tint:#ffad8a; --ok:#d6d6d1; --dark:#0b0c0c; --r:16px;
-  --sans:'Inter Tight','Inter',system-ui,-apple-system,'Segoe UI',sans-serif; --mono:'DM Mono',ui-monospace,'SF Mono',Menlo,monospace;
-  /* degradado del hover: colores de la nube de puntos (menta → lima → arena → melocotón → naranja) */
-  --grad:linear-gradient(100deg,#8fd3c4 0%,#b9e08f 13%,#f2dd8c 24%,#ffbf94 36%,#ff8a5c 50%,#ffbf94 64%,#f2dd8c 76%,#b9e08f 87%,#8fd3c4 100%);
+  --sans:'Nata Sans','Inter',system-ui,-apple-system,'Segoe UI',sans-serif; --mono:'DM Mono',ui-monospace,'SF Mono',Menlo,monospace;
+  /* degradado de marca, sutil (como el botón del Figma): verde suave arriba → menta abajo */
+  --grad:linear-gradient(180deg,#b5daa5 0%,#a2d3bd 100%);
 }
 *{box-sizing:border-box;margin:0;padding:0}
 html,body{height:100%}
@@ -38,9 +38,9 @@ svg{display:block}
 
 /* ---------- botones: hover con degradado de la nube de puntos ---------- */
 .btn{position:relative;isolation:isolate;overflow:hidden;display:inline-flex;align-items:center;justify-content:center;gap:8px;height:42px;padding:0 20px;border-radius:24px;font:400 14px/1 var(--sans);letter-spacing:-.01em;white-space:nowrap;transition:color .25s,transform .2s,box-shadow .3s,border-color .25s}
-.btn::before{content:"";position:absolute;inset:0;z-index:-1;background:var(--grad);background-size:200% 100%;opacity:0;transition:opacity .35s ease;animation:drift 5.5s linear infinite}
+.btn::before{content:"";position:absolute;inset:0;z-index:-1;background:var(--grad);opacity:0;transition:opacity .35s ease}
 .btn:hover::before,.btn:focus-visible::before{opacity:1}
-.btn:hover,.btn:focus-visible{color:#0b0c0c;transform:translateY(-1px);box-shadow:0 8px 22px -10px rgba(255,106,43,.55)}
+.btn:hover,.btn:focus-visible{color:#0b0c0c;transform:translateY(-1px);box-shadow:0 8px 22px -10px rgba(104,168,120,.5)}
 .btn:active{transform:translateY(0) scale(.985)}
 @keyframes drift{0%{background-position:0% 0}100%{background-position:200% 0}}
 .btn.dark{background:var(--ink);color:#fff}
@@ -68,7 +68,7 @@ svg{display:block}
 .tab.on{background:#fff}
 .hdr.detail .tabs{visibility:hidden}
 .hdr-r{display:flex;gap:12px;justify-content:flex-end;align-items:center}
-.search{position:relative;display:flex;align-items:center;gap:8px;height:34px;width:216px;padding:0 14px;border-radius:99px;background:#fff;transition:width .3s,box-shadow .3s}
+.search{position:relative;display:flex;align-items:center;gap:8px;height:34px;width:244px;padding:0 14px;border-radius:99px;background:#fff;transition:width .3s,box-shadow .3s}
 .search:focus-within{width:300px;box-shadow:0 0 0 2px rgba(255,106,43,.35)}
 .search input{border:0;outline:0;background:none;width:100%;font-size:13px}
 .search input::placeholder{color:#3a3a38}
@@ -574,9 +574,13 @@ body.present .search,body.present .tabs{opacity:.9}
 /* solo para capturas: ?clean=1 oculta controles y cotas del visor */
 html.clean #viewer .ovl,html.clean #viewer .vtop,html.clean #viewer .vnote,html.clean #viewer .vnav,html.clean #viewer .vig{display:none!important}
 
+/* avatar con el símbolo de Mailuna (como en Figma) */
+.avatar svg{width:32px;height:32px;display:block}
+
 </style>
 </head>
 <body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false"><symbol id="mx-logo" viewBox="0 0 32 32" fill="currentColor"><circle cx="10.9" cy="11.6" r="2.1"/><circle cx="16" cy="11.6" r="2.1"/><circle cx="21.1" cy="11.6" r="2.1"/><circle cx="16" cy="16.7" r="2.1"/><circle cx="16" cy="21.8" r="2.1"/></symbol></svg>
 <div id="app">
   <section class="screen" id="s-login" aria-label="Acceso"></section>
   <section class="screen" id="s-panel" aria-label="Estado de la red"></section>
@@ -877,7 +881,7 @@ H;1;TIPO TORRE 2;12.1;9.2;22.3;352`;
       <nav class="tabs">${tab('panel', 'Panel')}${tab('avisos', 'Avisos')}${tab('vuelos', 'Vuelos')}${tab('ordenes', 'Órdenes')}</nav>
       <div class="hdr-r">
         <label class="search">${MX.ic.search}<input type="text" placeholder="Buscar apoyo o coordenada" aria-label="Buscar apoyo" autocomplete="off"><div class="sugg"></div></label>
-        <div style="position:relative"><button class="avatar" aria-label="Cuenta">OI</button>
+        <div style="position:relative"><button class="avatar" aria-label="Cuenta"><svg viewBox="0 0 32 32" aria-hidden="true"><use href="#mx-logo"/></svg></button>
           <div class="menu"><div class="who">Olaia Irigoien<small>testuser@mailuna.com</small></div>
             <button data-act="orders">Órdenes de trabajo</button><button data-act="present">${document.body.classList.contains('present') ? 'Salir del modo presentación' : 'Modo presentación'} <kbd>P</kbd></button>
             <button data-act="big">${big ? 'Volver a los 8 apoyos reales' : 'Informe grande · 40 apoyos'} <kbd>M</kbd></button>
@@ -955,7 +959,7 @@ H;1;TIPO TORRE 2;12.1;9.2;22.3;352`;
     return stops[stops.length - 1].slice(1);
   };
   const RAMP_VEG = [[0, 22, 88, 84], [3, 44, 128, 100], [7, 104, 164, 116], [11, 176, 208, 150], [15, 226, 230, 196]];
-  const RAMP_TOW = [[0, 96, 140, 78], [8, 160, 160, 66], [15, 214, 134, 52], [22, 238, 96, 44], [32, 240, 70, 54]];
+  const RAMP_TOW = [[0, 112, 168, 84], [7, 176, 172, 64], [15, 220, 138, 48], [22, 238, 96, 44], [32, 240, 70, 54]];   // verde-oliva → amarillo → naranja → rojo, como la captura real
   const groundFn = (x, y) => { const amp = clamp((Math.abs(x) - 10) / 22, 0, 1) * 2.8; return amp * (Math.sin(x * .09 + y * .035) + .6 * Math.sin(y * .06 - x * .05 + 1.3)); };
 
   MX.sceneParams = function (a, TH) {
@@ -1085,8 +1089,8 @@ void main(){vec4 p=uVP*vec4(aPos,1.0);float d=p.w;
  bool hide=(d<16.0)||(aLod>0.5&&d>uLodD&&uAll<0.5)||(uGlow>0.5&&aCls<1.5);
  if(hide){gl_Position=vec4(2.0,2.0,2.0,1.0);gl_PointSize=0.0;vCol=vec3(0.0);vA=0.0;return;}
  gl_Position=p;float sz=uScale*aSize*clamp(0.85+34.0/d,0.85,2.3)*1.75;
- float fade=clamp(1.28-d/150.0,0.5,1.12);vCol=aCol*fade*1.12;vA=0.95*uFade*(aLod>0.5?0.72:1.0);
- if(uGlow>0.5){sz*=3.0;vA*=0.026;}
+ float fade=clamp(1.28-d/150.0,0.5,1.12);vCol=aCol*fade*(abs(aCls-2.0)<0.5?1.3:1.12);vA=0.95*uFade*(aLod>0.5?0.72:1.0);
+ if(uGlow>0.5){sz*=2.4;vA*=0.007;}
  gl_PointSize=sz;}`;
   const FS = `precision mediump float;varying vec3 vCol;varying float vA;
 void main(){float r=length(gl_PointCoord-vec2(0.5))*2.0;float a=(1.0-smoothstep(0.72,1.0,r))*vA;gl_FragColor=vec4(vCol*a,a);}`;
@@ -1139,7 +1143,7 @@ void main(){float r=length(gl_PointCoord-vec2(0.5))*2.0;float a=(1.0-smoothstep(
       if (this.sway && idle && !this.drag) { const t = (now - this.t0) / 1000; this.cam.az += (this.base.az + .34 * Math.sin(t * .13) - this.cam.az) * .02; this.cam.el += (this.base.el + .03 * Math.sin(t * .17) - this.cam.el) * .02; }
       this.matrix();
       gl.clearColor(0, 0, 0, 0); gl.clear(gl.COLOR_BUFFER_BIT);
-      gl.uniformMatrix4fv(L.vp, false, new Float32Array(this.vp)); gl.uniform1f(L.scale, (this.cssW / 872) * this.dpr); gl.uniform1f(L.lodD, 64);
+      gl.uniformMatrix4fv(L.vp, false, new Float32Array(this.vp)); gl.uniform1f(L.scale, (this.cssW / 872) * this.dpr); gl.uniform1f(L.lodD, 40);
       // 1) nube principal
       gl.blendFunc(gl.ONE, gl.ONE_MINUS_SRC_ALPHA); gl.uniform1f(L.glow, 0); gl.uniform1f(L.all, 0); gl.uniform1f(L.fade, this.fade);
       bind(this.main); gl.drawArrays(gl.POINTS, 0, this.main.n);
