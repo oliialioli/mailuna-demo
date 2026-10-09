@@ -156,7 +156,7 @@ svg{display:block}
 .rows3{grid-template-columns:repeat(2,minmax(0,1fr));margin-top:16px}
 .att .hd,.cal .hd{display:flex;justify-content:space-between;margin-bottom:14px}
 .att{padding-bottom:20px}
-.arow{display:grid;grid-template-columns:auto minmax(0,1fr) auto;align-items:center;gap:14px;padding:13px 0;border-top:1px solid var(--div);cursor:pointer}
+.arow{display:grid;grid-template-columns:auto minmax(0,1fr) auto;align-items:center;gap:14px;padding:10px 0;border-top:1px solid var(--div);cursor:pointer}
 .hd + .arow{border-top:0;padding-top:6px}
 .arow .t{font-size:15px;letter-spacing:-.01em}
 .arow .d{font-size:13px;color:var(--g1);margin-top:2px}
@@ -166,7 +166,7 @@ svg{display:block}
 .st{display:inline-flex;align-items:center;gap:7px;height:23px;padding:0 10px;border-radius:99px;background:var(--track);font:500 9px var(--mono);letter-spacing:.09em;text-transform:uppercase;white-space:nowrap}
 .st::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--c,var(--acc))}
 .st.v{--c:var(--tint)}.st.a{--c:var(--acc)}.st.o{--c:#c9c9c4}
-.seeall{display:inline-block;margin-top:12px;font-size:13px;text-decoration:underline;text-underline-offset:3px}
+.seeall{display:inline-block;margin-top:10px;font-size:14px;color:var(--ink);text-underline-offset:3px}.seeall:hover{text-decoration:underline}
 .seeall:hover{color:var(--acc)}
 .cal{display:flex;flex-direction:column}.kv{display:flex;flex-direction:column;flex:1;justify-content:space-between}
 .kv div{display:flex;justify-content:space-between;align-items:center;flex:1;padding:12px 0;border-top:1px solid var(--div);font-size:15px}
@@ -484,9 +484,9 @@ body.present .search,body.present .tabs{opacity:.9}
 @keyframes fadein{from{opacity:0}to{opacity:1}}
 .anim .card{animation:rise .6s cubic-bezier(.2,.7,.2,1) both}
 .anim .kpis .card:nth-child(2),.anim .rows2 .card:nth-child(2),.anim .rows3 .card:nth-child(2),.anim .col .card:nth-child(2),.anim .dright .card:nth-child(2){animation-delay:.07s}
-.anim .kpis .card:nth-child(3){animation-delay:.14s}.anim .kpis .card:nth-child(4){animation-delay:.21s}
+.anim .kpis .card:nth-child(3){animation-delay:.14s}.anim .kpis .card:nth-child(4){animation-delay:.21s}.anim .kpis .card:nth-child(5){animation-delay:.28s}
 .anim .rows2,.anim .main{animation:none}.anim .main .card{animation-delay:.12s}.anim .rows2 .card{animation-delay:.22s}.anim .rows3 .card{animation-delay:.32s}
-.anim .bar i,.anim .seg i,.anim .rk .tr i,.anim .scale i{transform-origin:left;animation:gx .95s cubic-bezier(.2,.7,.2,1) both;animation-delay:.35s}
+.anim .bar i,.anim .seg i,.anim .meter i,.anim .rk .tr i,.anim .scale i{transform-origin:left;animation:gx .95s cubic-bezier(.2,.7,.2,1) both;animation-delay:.35s}
 .anim .evo .col i,.anim .pbars i,.anim .mini i{transform-origin:bottom;animation:gy .9s cubic-bezier(.2,.7,.2,1) both}
 .anim .evo .col em,.anim .mini em{animation:fadein .6s ease both;animation-delay:.9s}
 .anim .cnt{animation:pop .5s cubic-bezier(.3,1.5,.5,1) both;animation-delay:.8s}
@@ -576,6 +576,21 @@ html.clean #viewer .ovl,html.clean #viewer .vtop,html.clean #viewer .vnote,html.
 
 /* avatar con el símbolo de Mailuna (como en Figma) */
 .avatar svg{width:32px;height:32px;display:block}
+
+/* KPI «Inspeccionados» (del Figma): cifra + total, barra de progreso en negro y lectura en % */
+.kpis.k5{grid-template-columns:repeat(5,minmax(0,1fr))}
+.meter{height:8px;border-radius:4px;background:var(--track);margin:14px 0 12px;overflow:hidden}
+.meter i{display:block;height:100%;border-radius:4px;background:var(--ink);transition:filter .2s}
+.insp-t{font-size:14px;color:var(--ink)}
+@media (max-width:1180px){.kpis.k5{grid-template-columns:repeat(2,minmax(0,1fr))}}
+
+/* Requieren atención (como en Figma): punto de estado en lugar de chip */
+.arow .sd{width:8px;height:8px;border-radius:50%;background:var(--c,var(--acc));align-self:start;margin-top:7px;flex:none}
+.arow .sd.v{--c:var(--tint)}.arow .sd.a{--c:var(--acc)}.arow .sd.o{--c:#c9c9c4}
+
+/* 5 KPIs en fila: chips algo más compactos para que quepan en una línea; fila seleccionada con aire respecto a la barra */
+.kpi .row-chips{gap:4px;flex-wrap:nowrap}.kpi .pillx{padding:0 7px;letter-spacing:.04em;white-space:nowrap}
+.arow.sel{padding-left:10px;margin-left:-10px}
 
 </style>
 </head>
@@ -742,7 +757,7 @@ H;1;TIPO TORRE 2;12.1;9.2;22.3;352`;
   /* metadatos del informe: los de la demo solo se muestran con los datos de ejemplo */
   MX.meta = function () {
     const demo = MX.state.sample || MX.state.big;
-    return demo ? { demo: true, code: 'L-220', zone: 'Zona Centro', line: 'L-220 · Tramo norte', flight: '12.09.2026', pts: 18432, sensor: 'LIDAR L2' } : { demo: false, code: 'Informe', zone: '', line: 'Informe cargado', flight: MX.demoDate(), pts: null, sensor: 'LIDAR' };
+    return demo ? { demo: true, code: 'L-220', zone: 'Zona Centro', line: 'L-220 · Tramo norte', flight: '12.09.2026', pts: 18432, sensor: 'LIDAR L2', net: { done: 1284, total: 1512 }, km: { value: 412, month: 'septiembre', flights: 14, density: 45, prec: 0.05 } } : { demo: false, code: 'Informe', zone: '', line: 'Informe cargado', flight: MX.demoDate(), pts: null, sensor: 'LIDAR' };
   };
 
   /* ---------- demo: historial de avisos activos (último = hoy) ---------- */
@@ -1367,13 +1382,23 @@ void main(){float r=length(gl_PointCoord-vec2(0.5))*2.0;float a=(1.0-smoothstep(
     const idsA = () => [...new Set(D.all.filter(i => i.t === 2).map(i => i.id))].join(', ') || '—', idsV = () => [...new Set(D.all.filter(i => i.t === 1).map(i => i.id))].join(', ') || '—';
 
     const seg = (parts) => `<div class="seg">${parts.filter(p => p[0] > 0).map(p => `<i data-tip="${A(p[2])}" style="flex:${p[0]};background:${p[1]}"></i>`).join('')}</div>`;
-    const kpis = `<section class="grid kpis">
+    const apo = `<div class="card kpi"><div class="eyebrow">Apoyos analizados</div><div class="v"><span class="n">${D.n}</span></div>
+        ${seg([[D.stCount[2], ACC, TR(ACC, `${D.stCount[2]} apoyos en actuar`, '', idsOf(byState(2)))], [D.stCount[1], TINT, TR(TINT, `${D.stCount[1]} apoyos en vigilar`, '', idsOf(byState(1)))], [D.stCount[0], OKC, TR(OKC, `${D.stCount[0]} sin incidencias`, '', idsOf(byState(0)))]])}
+        <div class="foot"><span class="dotl" style="--c:${ACC}">${D.stCount[2]} actuar</span><span class="dotl" style="--c:${TINT}">${D.stCount[1]} vigilar</span><span class="dotl" style="--c:${OKC}">${D.stCount[0]} sin incidencias</span></div></div>`;
+    const km = M.km ? `<div class="card kpi"><div class="eyebrow">Km volados · ${M.km.month}</div><div class="v"><span class="n">${MX.fi(M.km.value)}</span><span class="u">Km</span></div><div class="foot" style="align-items:flex-end"><div class="row-chips">
+        <span class="pillx" data-tip="${A(TR('', `${M.km.flights} vuelos en ${M.km.month}`, 'Inspecciones LiDAR del mes'))}">${M.km.flights} vuelos</span>
+        <span class="pillx" data-tip="${A(TR('', 'Densidad de puntos', 'Media del sensor LIDAR L2'))}">${M.km.density} pt/m²</span>
+        <span class="pillx" data-tip="${A(TR('', 'Precisión', 'Error vertical del sensor'))}">±${MX.fm(M.km.prec, 2)} m</span></div></div></div>` : '';
+    const pct = M.net ? Math.round(M.net.done / M.net.total * 100) : 0;
+    const insp = M.net ? `<div class="card kpi"><div class="eyebrow">Inspeccionados</div><div class="v"><span class="n">${MX.fi(M.net.done)}</span><span class="u">/ ${MX.fi(M.net.total)}</span></div>
+        <div class="meter" data-tip="${A(TR('#141414', `Inspeccionados · ${MX.fi(M.net.done)} de ${MX.fi(M.net.total)} apoyos`, `${pct} % de la red`, `Pendientes de inspección: ${MX.fi(M.net.total - M.net.done)}`))}"><i style="width:${pct}%"></i></div>
+        <div class="foot"><span class="insp-t">${pct} % de la red</span></div></div>` : '';
+    const kpis = `<section class="grid kpis${M.net ? ' k5' : ''}">
       <div class="card kpi"><div class="eyebrow">Avisos activos</div><div class="v"><span class="n">${D.nAvisos}</span><span class="u">en ${D.nApoyosAviso} apoyos</span></div>
         ${seg([[D.nAct, ACC, TR(ACC, `${D.nAct} avisos en actuar`, 'Requieren intervención', 'Apoyos: ' + idsA())], [D.nVig, TINT, TR(TINT, `${D.nVig} avisos en vigilar`, 'Seguimiento en la próxima inspección', 'Apoyos: ' + idsV())]])}
         <div class="foot"><span class="dotl" style="--c:${ACC}">${D.nAct} actuar</span><span class="dotl" style="--c:${TINT}">${D.nVig} vigilar</span></div></div>
-      <div class="card kpi"><div class="eyebrow">Apoyos analizados</div><div class="v"><span class="n">${D.n}</span></div>
-        ${seg([[D.stCount[2], ACC, TR(ACC, `${D.stCount[2]} apoyos en actuar`, '', idsOf(byState(2)))], [D.stCount[1], TINT, TR(TINT, `${D.stCount[1]} apoyos en vigilar`, '', idsOf(byState(1)))], [D.stCount[0], OKC, TR(OKC, `${D.stCount[0]} sin incidencias`, '', idsOf(byState(0)))]])}
-        <div class="foot"><span class="dotl" style="--c:${ACC}">${D.stCount[2]} actuar</span><span class="dotl" style="--c:${TINT}">${D.stCount[1]} vigilar</span><span class="dotl" style="--c:${OKC}">${D.stCount[0]} sin incidencias</span></div></div>
+      ${insp}
+      ${km || apo}
       <div class="card kpi"><div class="eyebrow">Altura libre media</div><div class="v"><span class="n">${MX.fm(D.libreMean)}</span><span class="u">m</span></div><div class="foot" style="align-items:flex-end"><div class="row-chips">
         <span class="pillx" data-tip="${A(TR('', 'Altura libre al terreno', 'Media de ALTURA_LIBRE de los ' + D.n + ' apoyos'))}">Terreno ${MX.fm(D.libreMean)}</span>
         <span class="pillx" data-tip="${A(TR('', 'Altura libre con vegetación', 'Media de ALTURA_LIBRE_VEGETACION'))}">Veg. ${MX.fm(D.vegMean)}</span>
@@ -1385,11 +1410,11 @@ void main(){float r=length(gl_PointCoord-vec2(0.5))*2.0;float a=(1.0-smoothstep(
       <button class="btn dark" id="b-load">Cargar CSV</button></div></div>`;
     /* --- requieren atención (arriba: lo primero que hay que decidir) --- */
     const att = (expanded ? D.attention : D.attention.slice(0, 5));
-    const rowA = a => { const m = a.issues[0]; return `<div class="arow" role="link" tabindex="0" data-id="${MX.esc(a.id)}" data-cats="${a.issues.map(i => i.c).join(' ')}"><span class="st ${stCls(a)}">${a.st === 2 ? 'Actuar' : 'Vigilar'}</span>
+    const rowA = a => { const m = a.issues[0]; return `<div class="arow" role="link" tabindex="0" data-id="${MX.esc(a.id)}" data-cats="${a.issues.map(i => i.c).join(' ')}"><span class="sd ${stCls(a)}" role="img" aria-label="${a.st === 2 ? 'Actuar' : 'Vigilar'}"></span>
         <div><div class="t">${MX.esc(a.id)} · ${MX.esc(m.h)}${gestOf(a.id) ? '<span class="gest">En gestión</span>' : ''}</div><div class="d">${MX.esc(m.d)}</div>${expanded ? a.issues.slice(1).map(i => `<div class="d" style="margin-top:4px;color:#3a3a38">+ ${MX.esc(i.h)} · ${MX.esc(i.d)}</div>`).join('') : ''}</div>
         <button class="btn line sm" data-open="${MX.esc(a.id)}">${MX.esc(m.a.replace('Reprocesar con más puntos', 'Reprocesar'))} <span class="arr">→</span></button></div>`; };
-    const attC = `<div class="card att" id="c-att"><div class="hd"><span class="eyebrow">Requieren atención</span><span class="eyebrow">${D.nApoyosAviso} apoyos · ${D.nAvisos} avisos</span></div>
-        ${att.length ? att.map(rowA).join('') : '<p class="empty">Sin incidencias pendientes. Buen trabajo.</p>'}${D.attention.length > 5 || expanded ? `<button class="seeall" id="b-all">${expanded ? 'Ver menos' : 'Ver todas las incidencias'}</button>` : ''}</div>`;
+    const attC = `<div class="card att" id="c-att"><div class="hd"><span class="eyebrow">Requieren atención</span><span class="eyebrow">${D.attention.length} ${MX.pl(D.attention.length, 'pendiente', 'pendientes')}</span></div>
+        ${att.length ? att.map(rowA).join('') : '<p class="empty">Sin incidencias pendientes. Buen trabajo.</p>'}${D.attention.length ? `<button class="seeall" id="b-all">${expanded ? 'Ver menos' : 'Ver todas las incidencias'}</button>` : ''}</div>`;
     const cal = `<div class="card cal"><div class="hd"><span class="eyebrow">Calidad del dato</span></div><div class="kv">
         <div>Puntos de entrenamiento (mín.)<b>${MX.fi(D.ptsMin)}</b></div><div>Puntos de entrenamiento (mediana)<b>${MX.fi(D.ptsMedian)}</b></div>
         <div>Apoyos con confianza baja<b>${D.confLow ? '<i></i>' : ''}${D.confLow}</b></div><div>Precisión de clasificación<b>99,9 %</b></div><div>Cables de tierra atípicos<b>${D.earthAtyp ? '<i></i>' : ''}${D.earthAtyp}</b></div></div></div>`;
