@@ -7,14 +7,14 @@
 <title>Mailuna · demo</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Nata+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600;700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='9' fill='%230b0c0c'/%3E%3Ccircle cx='16' cy='16' r='6' fill='%23ff6a2b'/%3E%3C/svg%3E">
 <style>
 /* Mailuna · prototipo demo · tokens del diseño 2 (claro) + glass oscuro del acceso */
 :root{
   --bg:#e8e8e5; --card:#fff; --ink:#141414; --g1:#62625c; --g2:#6e6e68; --track:#ecebe6; --div:#e4e4e0; --field:#f3f3f1; --pill:#deded9;
-  --acc:#ff6a2b; --tint:#ffad8a; --ok:#d6d6d1; --dark:#0b0c0c; --r:16px;
-  --sans:'Nata Sans','Inter',system-ui,-apple-system,'Segoe UI',sans-serif; --mono:'DM Mono',ui-monospace,'SF Mono',Menlo,monospace;
+  --acc:#ff6a2b; --tint:#ffad8a; --red:#e13e2c; --yel:#eebc63; --grn:#a9de76; --ok:#d6d6d1; --dark:#0b0c0c; --r:16px;
+  --sans:'Instrument Sans','Inter',system-ui,-apple-system,'Segoe UI',sans-serif; --mono:'DM Mono',ui-monospace,'SF Mono',Menlo,monospace;
   /* degradado de marca, sutil (como el botón del Figma): verde suave arriba → menta abajo */
   --grad:linear-gradient(180deg,#b5daa5 0%,#a2d3bd 100%);
 }
@@ -96,7 +96,7 @@ svg{display:block}
 .seg{display:flex;gap:3px;height:6px;margin:12px 0 12px}
 .seg i{display:block;height:6px;border-radius:3px}
 .dotl{display:inline-flex;align-items:center;gap:6px;font-size:13px;color:#141414}
-.dotl::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--c,var(--acc))}
+.dotl::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--c,var(--red))}
 .pillx{display:inline-flex;align-items:center;height:23px;padding:0 10px;border-radius:99px;background:var(--track);font:500 9px var(--mono);letter-spacing:.08em;text-transform:uppercase}
 .row-chips{display:flex;gap:6px;flex-wrap:wrap}
 .main{grid-template-columns:minmax(0,1fr) 405px;margin-top:16px;align-items:stretch}
@@ -135,7 +135,7 @@ svg{display:block}
 .brow .cn{display:flex;align-items:center;gap:10px}
 .brow .of{font:400 9px var(--mono);color:var(--g1);letter-spacing:.05em}
 .cnt{display:inline-grid;place-items:center;width:24px;height:24px;border-radius:50%;font:500 10px var(--mono);color:#141414}
-.cnt.a{background:var(--acc)}.cnt.v{background:var(--tint)}
+.cnt.a{background:var(--red);color:#fff}.cnt.v{background:var(--yel)}
 .bar{position:relative;height:6px;border-radius:3px;background:var(--track);overflow:hidden;display:flex;gap:1.5px}
 .bar i{display:block;height:6px;border-radius:3px}
 .bleg{display:flex;justify-content:space-between;align-items:center;margin-top:10px;font-size:12px;color:var(--g1)}
@@ -156,7 +156,7 @@ svg{display:block}
 .rows3{grid-template-columns:repeat(2,minmax(0,1fr));margin-top:16px}
 .att .hd,.cal .hd{display:flex;justify-content:space-between;margin-bottom:14px}
 .att{padding-bottom:20px}
-.arow{display:grid;grid-template-columns:auto minmax(0,1fr) auto;align-items:center;gap:14px;padding:10px 0;border-top:1px solid var(--div);cursor:pointer}
+.arow{display:grid;grid-template-columns:auto minmax(0,1fr) auto;align-items:center;gap:14px;padding:8px 0;border-top:1px solid var(--div);cursor:pointer}
 .hd + .arow{border-top:0;padding-top:6px}
 .arow .t{font-size:15px;letter-spacing:-.01em}
 .arow .d{font-size:13px;color:var(--g1);margin-top:2px}
@@ -164,15 +164,15 @@ svg{display:block}
 .arow.hl{background:linear-gradient(90deg,rgba(255,173,138,.16),transparent)}
 .arow .gest{font:500 9px var(--mono);letter-spacing:.07em;color:#1c7a4a;text-transform:uppercase;margin-left:8px}
 .st{display:inline-flex;align-items:center;gap:7px;height:23px;padding:0 10px;border-radius:99px;background:var(--track);font:500 9px var(--mono);letter-spacing:.09em;text-transform:uppercase;white-space:nowrap}
-.st::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--c,var(--acc))}
-.st.v{--c:var(--tint)}.st.a{--c:var(--acc)}.st.o{--c:#c9c9c4}
+.st::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--c,var(--red))}
+.st.v{--c:var(--yel)}.st.a{--c:var(--red)}.st.o{--c:#c9c9c4}
 .seeall{display:inline-block;margin-top:10px;font-size:14px;color:var(--ink);text-underline-offset:3px}.seeall:hover{text-decoration:underline}
 .seeall:hover{color:var(--acc)}
 .cal{display:flex;flex-direction:column}.kv{display:flex;flex-direction:column;flex:1;justify-content:space-between}
 .kv div{display:flex;justify-content:space-between;align-items:center;flex:1;padding:12px 0;border-top:1px solid var(--div);font-size:15px}
 .kv div:first-child{border-top:0;padding-top:8px}
 .kv b{font:500 14px var(--mono);letter-spacing:.02em;display:inline-flex;align-items:center;gap:8px}
-.kv b i{width:7px;height:7px;border-radius:50%;background:var(--tint)}
+.kv b i{width:7px;height:7px;border-radius:50%;background:var(--yel)}
 .rk{display:grid;grid-template-columns:20px 54px 1fr 76px;align-items:center;gap:10px;height:33px;cursor:pointer}
 .rk:hover .id{color:var(--acc)}
 .rk .id{font:500 12px var(--mono);transition:color .2s}
@@ -215,14 +215,14 @@ svg{display:block}
 .layers input:checked::after{content:"✓";font-size:9px;font-weight:700;color:#141414;line-height:1}
 .vchip{font:500 9px var(--mono);letter-spacing:.09em;color:#fff;display:flex;gap:8px;align-items:center;text-transform:uppercase}
 .vchip i{width:6px;height:6px;border-radius:50%;background:#b6f26a}
-.vchip.warn i{background:var(--tint)}
+.vchip.warn i{background:var(--yel)}
 .vnav{position:absolute;right:14px;top:50%;transform:translateY(-50%);display:grid;gap:10px;z-index:3}
 .vnav button{width:34px;height:34px;border-radius:50%;background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.14);color:#fff;display:grid;place-items:center;backdrop-filter:blur(6px);transition:background .25s,color .25s}
 .vnav button:hover,.vnav button:focus-visible{background:var(--grad);background-size:200% 100%;color:#0b0c0c}
 .ovl{position:absolute;inset:0;pointer-events:none;z-index:2}
 .ovl svg{position:absolute;inset:0;width:100%;height:100%;overflow:visible}
 .cota{position:absolute;white-space:nowrap;font:500 9.5px var(--mono);letter-spacing:.1em;text-transform:uppercase;padding:7px 11px;border-radius:5px;background:#fff;color:#141414;transform:translate(0,-50%)}
-.cota.org{background:var(--acc);color:#141414}
+.cota.org{background:var(--red);color:#fff}
 .cota.ghost{background:rgba(255,255,255,.16);color:#fff;border:1px solid rgba(255,255,255,.35);backdrop-filter:blur(6px)}
 .cota.r{transform:translate(-100%,-50%)}
 .ptip{position:absolute;min-width:150px;padding:9px 11px;border-radius:8px;background:rgba(255,255,255,.13);border:1px solid rgba(255,255,255,.2);backdrop-filter:blur(10px);color:#fff;transform:translate(-100%,-50%)}
@@ -238,7 +238,7 @@ svg{display:block}
 .profile{grid-column:1 / -1;position:relative;border-radius:14px;background:#f1f1ee;overflow:hidden;height:100px}
 .profile svg{position:absolute;inset:0;width:100%;height:100%}
 .profile .pl{position:absolute;left:10px;top:8px;background:#f1f1ee;padding:2px 6px;border-radius:6px;font:400 9px var(--mono);letter-spacing:.07em;color:var(--g2);text-transform:uppercase}
-.profile .um{position:absolute;right:14px;font:500 9px var(--mono);letter-spacing:.07em;color:var(--acc)}
+.profile .um{position:absolute;right:14px;font:500 9px var(--mono);letter-spacing:.07em;color:var(--red)}
 .dright{display:grid;gap:16px;align-content:start}
 .hero .top{display:flex;justify-content:space-between;align-items:center}
 .hero .big{display:flex;align-items:baseline;gap:8px;margin-top:8px}
@@ -246,13 +246,13 @@ svg{display:block}
 .hero .big span{font:400 22px var(--sans);color:var(--g2)}
 .hero .sub{font-size:13px;color:var(--g1);margin-top:6px}
 .scale{position:relative;height:4px;border-radius:2px;background:var(--track);margin:24px 0 8px}
-.scale i{position:absolute;left:0;top:0;height:4px;border-radius:2px;background:var(--acc)}
+.scale i{position:absolute;left:0;top:0;height:4px;border-radius:2px;background:var(--red)}
 .scale u{position:absolute;top:-6px;width:1.5px;height:16px;background:var(--ink);text-decoration:none}
 .sticks{display:flex;justify-content:space-between;font:400 9px var(--mono);color:var(--g1);letter-spacing:.06em;position:relative;height:12px}
 .sticks b{position:absolute;transform:translateX(-50%);font-weight:500;color:var(--ink)}
 .more{margin-top:16px;border-top:1px solid var(--div);padding-top:10px;display:grid;gap:8px}
 .more div{display:flex;gap:9px;font-size:12.5px;color:#3a3a38;align-items:flex-start}
-.more div::before{content:"";flex:none;margin-top:5px;width:6px;height:6px;border-radius:50%;background:var(--c,var(--tint))}
+.more div::before{content:"";flex:none;margin-top:5px;width:6px;height:6px;border-radius:50%;background:var(--c,var(--yel))}
 .tech{display:grid;grid-template-columns:1fr 1fr}
 .tech>div{padding:16px 24px;border-top:1px solid var(--div)}
 .tech>div:nth-child(-n+2){border-top:0}
@@ -366,9 +366,9 @@ svg{display:block}
 .evo .chart:hover .col:not(:hover) i{filter:saturate(.6) opacity(.7)}
 .pbars:hover i:not(:hover){opacity:.65}.pbars i{transition:opacity .2s}
 .tech>div{transition:background .2s}.tech>div:hover{background:#fafaf8}
-.arow.sel{box-shadow:inset 2px 0 0 #141414;background:#f7f7f4}
+.arow.sel{box-shadow:none;background:transparent}.arow.sel .sd{box-shadow:0 0 0 3px rgba(20,20,20,.14)}
 .arow.sel .t{font-weight:500}
-.rk.sel .id{color:var(--acc)}.rk.sel{background:#f7f7f4;box-shadow:-10px 0 0 #f7f7f4,10px 0 0 #f7f7f4}
+.rk.sel .id{color:var(--ink);font-weight:600}.rk.sel{background:#f7f7f4;box-shadow:-10px 0 0 #f7f7f4,10px 0 0 #f7f7f4}
 .rk .tk{position:absolute;top:2px;transform:translateX(-50%);font-size:9px;color:#707069}
 .menu kbd,.xmenu kbd,#presenter kbd{font:500 9px var(--mono);background:var(--field);border-radius:4px;padding:2px 5px;margin-left:8px;color:var(--g1)}
 .menu button{display:flex;justify-content:space-between;align-items:center}
@@ -585,12 +585,26 @@ html.clean #viewer .ovl,html.clean #viewer .vtop,html.clean #viewer .vnote,html.
 @media (max-width:1180px){.kpis.k5{grid-template-columns:repeat(2,minmax(0,1fr))}}
 
 /* Requieren atención (como en Figma): punto de estado en lugar de chip */
-.arow .sd{width:8px;height:8px;border-radius:50%;background:var(--c,var(--acc));align-self:start;margin-top:7px;flex:none}
-.arow .sd.v{--c:var(--tint)}.arow .sd.a{--c:var(--acc)}.arow .sd.o{--c:#c9c9c4}
+.arow .sd{width:8px;height:8px;border-radius:50%;background:var(--c,var(--red));align-self:start;margin-top:7px;flex:none}
+.arow .sd.v{--c:var(--yel)}.arow .sd.a{--c:var(--red)}.arow .sd.o{--c:#c9c9c4}
 
 /* 5 KPIs en fila: chips algo más compactos para que quepan en una línea; fila seleccionada con aire respecto a la barra */
 .kpi .row-chips{gap:4px;flex-wrap:nowrap}.kpi .pillx{padding:0 7px;letter-spacing:.04em;white-space:nowrap}
-.arow.sel{padding-left:10px;margin-left:-10px}
+
+/* Estado por línea (como en Figma): nombre + km/apoyos, barra de progreso, % y avisos */
+.rows3.r3{grid-template-columns:minmax(0,1.05fr) minmax(0,1.15fr) minmax(0,.95fr)}
+.est{padding-bottom:12px}.est .eyebrow{margin-bottom:6px}
+.erow{display:grid;grid-template-columns:minmax(0,172px) minmax(48px,1fr) 38px 84px;align-items:center;gap:14px;padding:13px 0;border-top:1px solid var(--div)}
+.est .eyebrow + .erow{border-top:0}
+.erow .en b{display:block;white-space:nowrap;font:400 17px/1.25 var(--sans);letter-spacing:-.01em}.erow:hover .en b{color:#000}
+.erow .en small{display:block;font-size:13px;color:var(--g1);margin-top:3px}
+.est .meter{height:6px;margin:0;border-radius:3px}.est .meter i{border-radius:3px}
+.erow .ep{font:400 13px var(--mono);text-align:right}
+.erow .ea{display:inline-flex;align-items:center;gap:8px;font-size:15px;white-space:nowrap}.erow .ea i{width:8px;height:8px;border-radius:50%;display:block;flex:none}
+@media (max-width:1180px){.rows3.r3{grid-template-columns:minmax(0,1fr)}}
+
+/* cabecera: el texto de la miga comparte línea base con el logo (la flecha de volver no se mueve) */
+.crumb{position:relative;top:3px}.crumb .back{position:relative;top:-3px}
 
 </style>
 </head>
@@ -805,6 +819,11 @@ H;1;TIPO TORRE 2;12.1;9.2;22.3;352`;
     return out.sort((a, b) => a.iso.localeCompare(b.iso));
   };
   MX.LINES = ['L-220 · Tramo norte', 'L-132 · Tramo sur', 'L-400 · Tramo este', 'L-066 · Tramo oeste'];
+  /* estado por línea de la red (demo; tal cual el diseño de Figma): % inspeccionado y avisos activos */
+  MX.lineStatus = D => [
+    { name: 'L-220 · Tramo norte', km: 32, apoyos: 124, pct: 94, av: D ? D.nAvisos : 9 }, { name: 'L-400 · Tramo este', km: 58, apoyos: 186, pct: 88, av: 9 },
+    { name: 'L-132 · Tramo sur', km: 41, apoyos: 210, pct: 76, av: 8 }, { name: 'L-066 · Tramo oeste', km: 27, apoyos: 162, pct: 62, av: 6 },
+  ];
 
   /* ---------- informe grande para enseñar que escala (determinista) ---------- */
   MX.bigSample = function (n) {
@@ -1201,7 +1220,7 @@ void main(){float r=length(gl_PointCoord-vec2(0.5))*2.0;float a=(1.0-smoothstep(
   const W = 923, H = 568;
   const PATH = [[92, 452], [196, 418], [298, 396], [404, 352], [506, 336], [606, 292], [712, 262], [822, 214]];
   const OFF = { default: [8, -19], A: [-4, 10], G: [18, -36], H: [11, 6] };
-  const ACC = '#ff6a2b', TINT = '#ffad8a', OK = '#e8e8e5', DK = '#0b0c0c';
+  const ACC = '#e13e2c', TINT = '#eebc63', OK = '#e8e8e5', DK = '#0b0c0c';
 
   // posiciones de N apoyos a lo largo de la línea (el CSV de ejemplo usa las 8 posiciones del diseño)
   function place(n) {
@@ -1256,13 +1275,13 @@ void main(){float r=length(gl_PointCoord-vec2(0.5))*2.0;float a=(1.0-smoothstep(
 
       function drawSel() {
         const a = D.byId[selected]; if (!a) return; const [x, y] = P[a.id];
-        const txt = MX.calloutText(a), w = txt.length * 6.6 + 42, bg = a.st === 2 ? ACC : a.st === 1 ? TINT : '#d6d6d1';
+        const txt = MX.calloutText(a), w = txt.length * 6.6 + 42, bg = a.st === 2 ? ACC : a.st === 1 ? TINT : '#d6d6d1'; const fg = a.st === 2 ? '#fff' : '#141414';
         const cy = Math.min(y + 76, H - 70);
         selg.innerHTML = `<circle cx="${x}" cy="${y}" r="19" fill="none" stroke="${a.st === 2 ? ACC : TINT}" stroke-width="1.5" stroke-opacity=".9"/>
           <line x1="${x}" y1="${y + 19}" x2="${x}" y2="${cy}" stroke="${a.st === 2 ? ACC : TINT}" stroke-width="1"/>
           <g class="callout" transform="translate(${Math.max(8, Math.min(W - w - 8, x - w / 2))},${cy})"><rect width="${w}" height="30" rx="4" fill="${bg}"/>
-            <text x="12" y="19.5" font-family="DM Mono,monospace" font-weight="500" font-size="10" letter-spacing=".9" fill="#141414">${MX.esc(txt)}</text>
-            <text x="${w - 20}" y="19.5" font-family="DM Mono,monospace" font-size="11" fill="#141414">→</text></g>`;
+            <text x="12" y="19.5" font-family="DM Mono,monospace" font-weight="500" font-size="10" letter-spacing=".9" fill="${fg}">${MX.esc(txt)}</text>
+            <text x="${w - 20}" y="19.5" font-family="DM Mono,monospace" font-size="11" fill="${fg}">→</text></g>`;
         selg.querySelector('.callout').addEventListener('click', () => opt.onOpen && opt.onOpen(a.id));
         svg.querySelectorAll('.apoyo').forEach(g => g.classList.toggle('sel', g.dataset.id === selected));
       }
@@ -1294,7 +1313,7 @@ void main(){float r=length(gl_PointCoord-vec2(0.5))*2.0;float a=(1.0-smoothstep(
    Mapa, lista y ranking comparten la selección de apoyo. Todos los charts tienen hover. */
 (function () {
   const MX = (window.MX = window.MX || {});
-  const ACC = '#ff6a2b', TINT = '#ffad8a', OKC = '#d6d6d1';
+  const ACC = '#e13e2c', TINT = '#eebc63', OKC = '#d6d6d1', GRN = '#a9de76';
   const MONTHS_FULL = ['octubre', 'noviembre', 'diciembre', 'enero', 'febrero', 'marzo', 'abril', 'mayo', 'junio', 'julio', 'agosto', 'septiembre'];
   const stCls = a => (a.st === 2 ? 'a' : a.st === 1 ? 'v' : 'o');
   const stTxt = a => (a.st === 2 ? 'Actuar' : a.st === 1 ? 'Vigilar' : 'Sin incidencias');
@@ -1411,7 +1430,7 @@ void main(){float r=length(gl_PointCoord-vec2(0.5))*2.0;float a=(1.0-smoothstep(
     /* --- requieren atención (arriba: lo primero que hay que decidir) --- */
     const att = (expanded ? D.attention : D.attention.slice(0, 5));
     const rowA = a => { const m = a.issues[0]; return `<div class="arow" role="link" tabindex="0" data-id="${MX.esc(a.id)}" data-cats="${a.issues.map(i => i.c).join(' ')}"><span class="sd ${stCls(a)}" role="img" aria-label="${a.st === 2 ? 'Actuar' : 'Vigilar'}"></span>
-        <div><div class="t">${MX.esc(a.id)} · ${MX.esc(m.h)}${gestOf(a.id) ? '<span class="gest">En gestión</span>' : ''}</div><div class="d">${MX.esc(m.d)}</div>${expanded ? a.issues.slice(1).map(i => `<div class="d" style="margin-top:4px;color:#3a3a38">+ ${MX.esc(i.h)} · ${MX.esc(i.d)}</div>`).join('') : ''}</div>
+        <div><div class="t">${MX.esc(a.id)} · ${MX.esc(m.h)}</div><div class="d">${MX.esc(m.d)}</div>${expanded ? a.issues.slice(1).map(i => `<div class="d" style="margin-top:4px;color:#3a3a38">+ ${MX.esc(i.h)} · ${MX.esc(i.d)}</div>`).join('') : ''}</div>
         <button class="btn line sm" data-open="${MX.esc(a.id)}">${MX.esc(m.a.replace('Reprocesar con más puntos', 'Reprocesar'))} <span class="arr">→</span></button></div>`; };
     const attC = `<div class="card att" id="c-att"><div class="hd"><span class="eyebrow">Requieren atención</span><span class="eyebrow">${D.attention.length} ${MX.pl(D.attention.length, 'pendiente', 'pendientes')}</span></div>
         ${att.length ? att.map(rowA).join('') : '<p class="empty">Sin incidencias pendientes. Buen trabajo.</p>'}${D.attention.length ? `<button class="seeall" id="b-all">${expanded ? 'Ver menos' : 'Ver todas las incidencias'}</button>` : ''}</div>`;
@@ -1423,13 +1442,13 @@ void main(){float r=length(gl_PointCoord-vec2(0.5))*2.0;float a=(1.0-smoothstep(
           <div class="mapleg"><span><i style="background:${ACC}"></i>Actuar</span><span><i style="background:${TINT}"></i>Vigilar</span><span><i style="background:#e8e8e5"></i>Sin incidencias</span></div>
           <div class="mapramp"><span>Altura de vegetación (LiDAR)</span><b></b><div><span>0</span><span>10</span><span>20 m</span></div></div></div></div>`;
     /* --- avisos por tipo --- */
-    const tr = (k) => { const t = T[k], n = t.a + t.v, pct = D.nAvisos ? Math.round(n / D.nAvisos * 100) : 0;
-      const tip = TR(t.a ? ACC : TINT, `${MX.CAT[k]} · ${n} ${n === 1 ? 'aviso' : 'avisos'}`, `${pct} % de los ${D.nAvisos} avisos`, `${t.a} actuar · ${t.v} vigilar${n ? ' · apoyos ' + ids(k) : ''}`);
+    const tr = (k) => { const t = T[k], n = t.a + t.v, ok = Math.max(0, D.n - n);
+      const tip = TR(t.a ? ACC : n ? TINT : GRN, `${MX.CAT[k]} · ${n} ${n === 1 ? 'aviso' : 'avisos'}`, `${t.a} actuar · ${t.v} vigilar · ${ok} sin aviso`, n ? 'Apoyos: ' + ids(k) : `Los ${D.n} apoyos sin incidencias`);
       return `<div class="brow" role="button" tabindex="0" data-cat="${k}" data-tip="${A(tip)}"><div class="l"><span class="nm">${MX.CAT[k]} ${MX.ic.chev}</span>
-        <span class="cn"><span class="of">${n} de ${D.nAvisos}</span>${t.v ? `<span class="cnt v">${t.v}</span>` : ''}${t.a ? `<span class="cnt a">${t.a}</span>` : ''}</span></div>
-        <div class="bar">${t.a ? `<i style="width:${t.a / D.nAvisos * 100}%;background:${ACC}"></i>` : ''}${t.v ? `<i style="width:${t.v / D.nAvisos * 100}%;background:${TINT}"></i>` : ''}</div></div>`; };
+        <span class="cn">${t.v ? `<span class="cnt v">${t.v}</span>` : ''}${t.a ? `<span class="cnt a">${t.a}</span>` : ''}</span></div>
+        <div class="bar">${t.a ? `<i style="flex:${t.a};background:${ACC}"></i>` : ''}${t.v ? `<i style="flex:${t.v};background:${TINT}"></i>` : ''}${ok ? `<i style="flex:${ok};background:${GRN}"></i>` : ''}</div></div>`; };
     const tipo = `<div class="card" id="c-tipo"><div class="eyebrow" style="margin-bottom:12px">Avisos por tipo</div><div class="bars">${['veg', 'dev', 'earth', 'conf'].map(tr).join('')}</div>
-        <div class="bleg"><div><span><i style="background:${ACC}"></i>Actuar</span><span><i style="background:${TINT}"></i>Vigilar</span></div><span style="margin:0;color:#707069">Barra: peso sobre los ${D.nAvisos} avisos</span></div></div>`;
+        <div class="bleg"><div><span><i style="background:${ACC}"></i>Actuar</span><span><i style="background:${TINT}"></i>Vigilar</span><span><i style="background:${GRN}"></i>Sin aviso</span></div></div></div>`;
     const FL = MX.flights(D), done = FL.filter(f => f.estado === 'Completado'), nextF = FL.filter(f => f.estado === 'Hoy' || f.estado === 'Programado'), lastF = done[done.length - 1];
     const vi = (lab, f, sub, last) => f ? `<a class="vitem" href="#/vuelos"${last ? ' style="margin-bottom:0"' : ''}><small>${lab} · ${f.date}</small><b>${MX.esc(f.line)}</b><span>${sub}</span></a>` : '';
     const vuelos = `<div class="card vuelos" id="c-vuelos"><div class="hd"><span class="eyebrow">Vuelos</span><a class="link" href="#/vuelos">Ver calendario ${MX.ic.chev}</a></div>
@@ -1444,6 +1463,10 @@ void main(){float r=length(gl_PointCoord-vec2(0.5))*2.0;float a=(1.0-smoothstep(
     const rank = `<div class="card" id="c-rank"><div class="top"><span class="eyebrow">Mayor reducción de altura libre por vegetación</span>
         <div class="leg"><span><i style="background:${OKC}"></i>Sin aviso &lt; ${D.TH.vegWarn} m</span><span><i style="background:${TINT}"></i>Vigilar ≥ ${D.TH.vegWarn} m</span><span><i style="background:${ACC}"></i>Actuar ≥ ${D.TH.vegCrit} m</span></div></div>
         <div class="rk" style="height:22px;margin-top:6px"><span></span><span></span><div class="tr" style="background:none"><span class="eyebrow tk" style="left:${D.TH.vegWarn / MAXG * 100}%">${D.TH.vegWarn} m</span><span class="eyebrow tk" style="left:${D.TH.vegCrit / MAXG * 100}%">${D.TH.vegCrit} m</span></div><span></span></div>${rk}</div>`;
+    /* --- estado por línea (demo, como en Figma) --- */
+    const LS = M.net ? MX.lineStatus(D) : null;
+    const estC = LS ? `<div class="card est" id="c-est"><div class="eyebrow">Estado por línea</div>${LS.map(l => { const c = l.av >= 8 ? ACC : TINT;
+      return `<div class="erow" data-tip="${A(TR(c, l.name, `${l.pct} % inspeccionado`, `${l.av} avisos activos · ${l.km} km · ${l.apoyos} apoyos`))}"><div class="en"><b>${l.name}</b><small>${l.km} km · ${l.apoyos} apoyos</small></div><div class="meter"><i style="width:${l.pct}%"></i></div><span class="ep">${l.pct} %</span><span class="ea"><i style="background:${c}"></i>${l.av} avisos</span></div>`; }).join('')}</div>` : '';
     /* --- evolución --- */
     const evo = `<div class="card evo" id="c-evo"><div class="eyebrow">Evolución de avisos activos</div><div class="head">Pico en ${MONTHS_FULL[peak]} por crecimiento de vegetación; ${D.nAvisos} avisos hoy</div>
         <div class="chart">${hist.map((v, i) => { const c = i < 6 ? OKC : i === 6 ? TINT : i === 11 ? '#141414' : ACC, d = i ? v - hist[i - 1] : 0;
@@ -1451,7 +1474,7 @@ void main(){float r=length(gl_PointCoord-vec2(0.5))*2.0;float a=(1.0-smoothstep(
           return `<div class="col" data-tip="${A(tip)}"><em style="${i === 11 ? 'color:#141414' : ''}">${v}</em><i style="height:${Math.max(6, v / mx * 150)}px;background:${c}"></i></div>`; }).join('')}</div>
         <div class="ax"><span>OCT</span><span>MAR</span><b>HOY</b></div></div>`;
     return `<div class="shell">${MX.header('panel')}${head}${kpis}<section class="grid main">${map}<div class="col">${tipo}${vuelos}</div></section>
-      <section class="grid rows2">${attC}${cal}</section><section class="grid rows3">${rank}${evo}</section></div>
+      <section class="grid rows2">${attC}${cal}</section><section class="grid rows3${estC ? ' r3' : ''}">${rank}${estC}${evo}</section></div>
       <input type="file" id="f-csv" accept=".csv,text/csv" hidden>`;
   }
 
@@ -1499,7 +1522,7 @@ void main(){float r=length(gl_PointCoord-vec2(0.5))*2.0;float a=(1.0-smoothstep(
 /* Mailuna · pantallas Vuelos y Órdenes (todo coherente con el CSV y con el histórico de avisos) */
 (function () {
   const MX = (window.MX = window.MX || {});
-  const ACC = '#ff6a2b', TINT = '#ffad8a', OKC = '#d6d6d1';
+  const ACC = '#e13e2c', TINT = '#eebc63', OKC = '#d6d6d1', HOY = '#ff6a2b', PROG = '#ffad8a';   // ACC/TINT = Actuar/Vigilar · HOY/PROG = estados de vuelo y orden
   const A = MX.tipAttr, TR = MX.tipRow, esc = MX.esc;
 
   /* ---------- modal genérico ---------- */
@@ -1516,7 +1539,7 @@ void main(){float r=length(gl_PointCoord-vec2(0.5))*2.0;float a=(1.0-smoothstep(
   MX.modalClose = function () { const m = document.getElementById('mx-modal'); if (!m) return; document.removeEventListener('keydown', m._k); m.classList.remove('on'); setTimeout(() => m.remove(), 250); };
 
   const dmy = iso => iso.slice(8, 10) + '.' + iso.slice(5, 7) + '.' + iso.slice(0, 4);
-  const stFlight = e => (e === 'Hoy' ? ACC : e === 'Programado' ? TINT : '#c9c9c4');
+  const stFlight = e => (e === 'Hoy' ? HOY : e === 'Programado' ? PROG : '#c9c9c4');
 
   /* =========================== VUELOS =========================== */
   let calY = 2026, calM = 9, selDate = null;
@@ -1527,7 +1550,7 @@ void main(){float r=length(gl_PointCoord-vec2(0.5))*2.0;float a=(1.0-smoothstep(
       const kpi = `<section class="grid kpis k3">
         <div class="card kpi"><div class="eyebrow">Último vuelo</div><div class="v"><span class="n" style="font-size:44px">${last.date}</span></div><div class="foot"><span>${last.line} · ${MX.fi(last.pts)} puntos · ${last.avisos} avisos</span></div></div>
         <div class="card kpi"><div class="eyebrow">Próximo vuelo</div><div class="v"><span class="n" style="font-size:44px">${hoy ? 'Hoy' : next[0] ? next[0].date : '—'}</span>${hoy ? '<span class="u">08.10.2026</span>' : ''}</div><div class="foot"><span>${hoy ? hoy.motivo : next[0] ? next[0].motivo : 'Sin vuelos programados'}</span></div></div>
-        <div class="card kpi"><div class="eyebrow">Vuelos en 2026</div><div class="v"><span class="n">${F.length}</span><span class="u">${done.length} completados · ${next.length} programados</span></div><div class="foot"><span class="dotl" style="--c:#c9c9c4">${done.length} completados</span><span class="dotl" style="--c:${ACC}">${next.filter(f => f.estado === 'Hoy').length} hoy</span><span class="dotl" style="--c:${TINT}">${next.filter(f => f.estado === 'Programado').length} programados</span></div></div></section>`;
+        <div class="card kpi"><div class="eyebrow">Vuelos en 2026</div><div class="v"><span class="n">${F.length}</span><span class="u">${done.length} completados · ${next.length} programados</span></div><div class="foot"><span class="dotl" style="--c:#c9c9c4">${done.length} completados</span><span class="dotl" style="--c:${HOY}">${next.filter(f => f.estado === 'Hoy').length} hoy</span><span class="dotl" style="--c:${PROG}">${next.filter(f => f.estado === 'Programado').length} programados</span></div></div></section>`;
       const head = `<div class="pghead"><div><h1>Vuelos</h1><p>Histórico y planificación de vuelos LiDAR · ${MX.meta().line}</p></div><div class="acts"><button class="btn dark" id="b-plan">${MX.ic.plus}<span>Planificar vuelo</span></button></div></div>`;
       // calendario
       const MN = ['enero', 'febrero', 'marzo', 'abril', 'mayo', 'junio', 'julio', 'agosto', 'septiembre', 'octubre', 'noviembre', 'diciembre'];
@@ -1538,7 +1561,7 @@ void main(){float r=length(gl_PointCoord-vec2(0.5))*2.0;float a=(1.0-smoothstep(
         cells += `<button class="cd${f ? ' fl' : ''}${today ? ' today' : ''}${selDate && f && selDate === f.iso ? ' sel' : ''}" ${f ? `data-iso="${f.iso}" data-tip="${A(TR(stFlight(f.estado), f.estado + ' · ' + f.date, f.line, f.motivo + (f.pts ? ' · ' + MX.fi(f.pts) + ' puntos' : '')))}"` : ''}>${d}${f ? `<s style="background:${stFlight(f.estado)}"></s>` : ''}</button>`; }
       const cal = `<div class="card cal2"><div class="top" style="align-items:center"><span class="eyebrow">Calendario</span><div class="cnav"><button data-m="-1" aria-label="Mes anterior">${MX.ic.prev}</button><b>${MN[calM]} ${calY}</b><button data-m="1" aria-label="Mes siguiente">${MX.ic.next}</button></div></div>
         <div class="cdow"><span>L</span><span>M</span><span>X</span><span>J</span><span>V</span><span>S</span><span>D</span></div><div class="cdays">${cells}</div>
-        <div class="leg" style="margin-top:14px"><span><i style="background:#c9c9c4"></i>Completado</span><span><i style="background:${ACC}"></i>Hoy</span><span><i style="background:${TINT}"></i>Programado</span></div>
+        <div class="leg" style="margin-top:14px"><span><i style="background:#c9c9c4"></i>Completado</span><span><i style="background:${HOY}"></i>Hoy</span><span><i style="background:${PROG}"></i>Programado</span></div>
         <div class="eyebrow" style="margin:22px 0 8px">Avisos tras cada vuelo</div>
         <div class="mini">${done.map((f, i) => { const mx = Math.max(...done.map(x => x.avisos)); return `<div data-tip="${A(TR(i === done.length - 1 ? '#141414' : '#c9c9c4', f.date, f.avisos + ' avisos activos', MX.fi(f.pts) + ' puntos · ' + f.apoyos + ' apoyos'))}"><em>${f.avisos}</em><i style="height:${Math.max(6, f.avisos / mx * 64)}px;background:${i === done.length - 1 ? '#141414' : i === 3 ? ACC : OKC}"></i></div>`; }).join('')}</div></div>`;
       // tabla
@@ -1579,7 +1602,7 @@ void main(){float r=length(gl_PointCoord-vec2(0.5))*2.0;float a=(1.0-smoothstep(
       const open = O.filter(MX.orderOpen), due = O.filter(dueThisWeek), done = O.filter(o => o.estado === 'Completada');
       const head = `<div class="pghead"><div><h1>Órdenes de trabajo</h1><p>Intervenciones generadas desde los avisos del análisis · ${MX.meta().line}</p></div><div class="acts"><button class="btn dark" id="b-new">${MX.ic.plus}<span>Nueva orden</span></button></div></div>`;
       const kpi = `<section class="grid kpis k3">
-        <div class="card kpi"><div class="eyebrow">Órdenes abiertas</div><div class="v"><span class="n">${open.length}</span><span class="u">${open.filter(o => o.estado === 'En curso').length} en curso</span></div><div class="foot"><span class="dotl" style="--c:${TINT}">${open.filter(o => o.estado === 'Pendiente').length} pendiente${open.filter(o => o.estado === 'Pendiente').length === 1 ? '' : 's'}</span><span class="dotl" style="--c:${ACC}">${open.filter(o => o.estado === 'En curso').length} en curso</span></div></div>
+        <div class="card kpi"><div class="eyebrow">Órdenes abiertas</div><div class="v"><span class="n">${open.length}</span><span class="u">${open.filter(o => o.estado === 'En curso').length} en curso</span></div><div class="foot"><span class="dotl" style="--c:${PROG}">${open.filter(o => o.estado === 'Pendiente').length} pendiente${open.filter(o => o.estado === 'Pendiente').length === 1 ? '' : 's'}</span><span class="dotl" style="--c:${HOY}">${open.filter(o => o.estado === 'En curso').length} en curso</span></div></div>
         <div class="card kpi"><div class="eyebrow">Vencen esta semana</div><div class="v"><span class="n">${due.length}</span></div><div class="foot"><span>${due.length ? due.map(o => o.n + ' · apoyo ' + o.id).join(' · ') : 'Ninguna orden próxima a vencer'}</span></div></div>
         <div class="card kpi"><div class="eyebrow">Completadas</div><div class="v"><span class="n">${done.length}</span><span class="u">este trimestre</span></div><div class="foot"><span>${done.length ? 'Última · ' + done[done.length - 1].fecha : 'Aún no hay órdenes completadas'}</span></div></div></section>`;
       const FS = ['Todas', 'Pendiente', 'En curso', 'Completada'], list = O.filter(o => filt === 'Todas' || o.estado === filt).slice().reverse();
@@ -1620,7 +1643,7 @@ void main(){float r=length(gl_PointCoord-vec2(0.5))*2.0;float a=(1.0-smoothstep(
 (function () {
   const MX = (window.MX = window.MX || {});
   const esc = MX.esc, fm = MX.fm;
-  const ACC = '#ff6a2b', TINT = '#ffad8a';
+  const ACC = '#e13e2c', TINT = '#eebc63';
   const stT = a => (a.st === 2 ? 'Actuar' : a.st === 1 ? 'Vigilar' : 'Sin incidencias'), stC = a => (a.st === 2 ? ACC : a.st === 1 ? TINT : '#c9c9c4');
 
   /* ---------- captura 3D de un apoyo (render fuera de pantalla con la misma escena del visor) ---------- */
@@ -1640,7 +1663,7 @@ void main(){float r=length(gl_PointCoord-vec2(0.5))*2.0;float a=(1.0-smoothstep(
         c.beginPath(); c.moveTo(dx - 6, A.y); c.lineTo(dx + 6, A.y); c.moveTo(dx - 6, G0.y); c.lineTo(dx + 6, G0.y); c.stroke();
         const chip = (t, x, y, bg, fg) => { c.font = '500 10px "DM Mono",monospace'; const w = c.measureText(t).width + 20; c.fillStyle = bg; c.fillRect(x, y - 12, w, 24); c.fillStyle = fg; c.fillText(t, x + 10, y + 3.5); };
         chip(`ALTURA LIBRE ${fm(a.libre)} M`, dx + 10, (A.y + G0.y) / 2 + (sc.treeTop && a.gap >= 1 ? 46 : 0), '#fff', '#141414');
-        if (sc.treeTop && a.gap >= 1) { const T = v.project(sc.treeTop); c.strokeStyle = ACC; c.lineWidth = 2.5; c.beginPath(); c.moveTo(A.x, A.y); c.lineTo(T.x, T.y); c.stroke(); chip(`ALTURA LIBRE VEGETACIÓN ${fm(a.veg)} M`, A.x - 262, (A.y + T.y) / 2, ACC, '#141414'); }
+        if (sc.treeTop && a.gap >= 1) { const T = v.project(sc.treeTop); c.strokeStyle = ACC; c.lineWidth = 2.5; c.beginPath(); c.moveTo(A.x, A.y); c.lineTo(T.x, T.y); c.stroke(); chip(`ALTURA LIBRE VEGETACIÓN ${fm(a.veg)} M`, A.x - 262, (A.y + T.y) / 2, ACC, '#fff'); }
         c.restore();
         const url = g.toDataURL('image/jpeg', .86); v.destroy(); host.remove(); res(url);
       } catch (e) { console.warn(e); res(null); }
@@ -1724,7 +1747,7 @@ void main(){float r=length(gl_PointCoord-vec2(0.5))*2.0;float a=(1.0-smoothstep(
    interactivo con los apoyos vecinos y tarjetas con hover. */
 (function () {
   const MX = (window.MX = window.MX || {});
-  const ACC = '#ff6a2b', TINT = '#ffad8a', OKC = '#d6d6d1';
+  const ACC = '#e13e2c', TINT = '#eebc63', OKC = '#d6d6d1';
   const fm = (n, d) => MX.fm(n, d), A = MX.tipAttr, TR = MX.tipRow;
   let view = null, curId = null, keyH = null, roProf = null;
   const stTxt = a => (a.st === 2 ? 'Actuar' : a.st === 1 ? 'Vigilar' : 'Sin incidencias');
