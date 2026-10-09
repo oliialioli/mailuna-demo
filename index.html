@@ -96,7 +96,7 @@ svg{display:block}
 .seg{display:flex;gap:3px;height:6px;margin:12px 0 12px}
 .seg i{display:block;height:6px;border-radius:3px}
 .dotl{display:inline-flex;align-items:center;gap:6px;font-size:13px;color:#141414}
-.dotl::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--c,var(--red))}
+.dotl::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--c,var(--acc))}
 .pillx{display:inline-flex;align-items:center;height:23px;padding:0 10px;border-radius:99px;background:var(--track);font:500 9px var(--mono);letter-spacing:.08em;text-transform:uppercase}
 .row-chips{display:flex;gap:6px;flex-wrap:wrap}
 .main{grid-template-columns:minmax(0,1fr) 405px;margin-top:16px;align-items:stretch}
@@ -164,8 +164,8 @@ svg{display:block}
 .arow.hl{background:linear-gradient(90deg,rgba(255,173,138,.16),transparent)}
 .arow .gest{font:500 9px var(--mono);letter-spacing:.07em;color:#1c7a4a;text-transform:uppercase;margin-left:8px}
 .st{display:inline-flex;align-items:center;gap:7px;height:23px;padding:0 10px;border-radius:99px;background:var(--track);font:500 9px var(--mono);letter-spacing:.09em;text-transform:uppercase;white-space:nowrap}
-.st::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--c,var(--red))}
-.st.v{--c:var(--yel)}.st.a{--c:var(--red)}.st.o{--c:#c9c9c4}
+.st::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--c,var(--acc))}
+.st.v{--c:var(--tint)}.st.a{--c:var(--acc)}.st.o{--c:#c9c9c4}
 .seeall{display:inline-block;margin-top:10px;font-size:14px;color:var(--ink);text-underline-offset:3px}.seeall:hover{text-decoration:underline}
 .seeall:hover{color:var(--acc)}
 .cal{display:flex;flex-direction:column}.kv{display:flex;flex-direction:column;flex:1;justify-content:space-between}
@@ -215,14 +215,14 @@ svg{display:block}
 .layers input:checked::after{content:"✓";font-size:9px;font-weight:700;color:#141414;line-height:1}
 .vchip{font:500 9px var(--mono);letter-spacing:.09em;color:#fff;display:flex;gap:8px;align-items:center;text-transform:uppercase}
 .vchip i{width:6px;height:6px;border-radius:50%;background:#b6f26a}
-.vchip.warn i{background:var(--yel)}
+.vchip.warn i{background:var(--tint)}
 .vnav{position:absolute;right:14px;top:50%;transform:translateY(-50%);display:grid;gap:10px;z-index:3}
 .vnav button{width:34px;height:34px;border-radius:50%;background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.14);color:#fff;display:grid;place-items:center;backdrop-filter:blur(6px);transition:background .25s,color .25s}
 .vnav button:hover,.vnav button:focus-visible{background:var(--grad);background-size:200% 100%;color:#0b0c0c}
 .ovl{position:absolute;inset:0;pointer-events:none;z-index:2}
 .ovl svg{position:absolute;inset:0;width:100%;height:100%;overflow:visible}
 .cota{position:absolute;white-space:nowrap;font:500 9.5px var(--mono);letter-spacing:.1em;text-transform:uppercase;padding:7px 11px;border-radius:5px;background:#fff;color:#141414;transform:translate(0,-50%)}
-.cota.org{background:var(--red);color:#fff}
+.cota.org{background:var(--acc);color:#fff}
 .cota.ghost{background:rgba(255,255,255,.16);color:#fff;border:1px solid rgba(255,255,255,.35);backdrop-filter:blur(6px)}
 .cota.r{transform:translate(-100%,-50%)}
 .ptip{position:absolute;min-width:150px;padding:9px 11px;border-radius:8px;background:rgba(255,255,255,.13);border:1px solid rgba(255,255,255,.2);backdrop-filter:blur(10px);color:#fff;transform:translate(-100%,-50%)}
@@ -238,7 +238,7 @@ svg{display:block}
 .profile{grid-column:1 / -1;position:relative;border-radius:14px;background:#f1f1ee;overflow:hidden;height:100px}
 .profile svg{position:absolute;inset:0;width:100%;height:100%}
 .profile .pl{position:absolute;left:10px;top:8px;background:#f1f1ee;padding:2px 6px;border-radius:6px;font:400 9px var(--mono);letter-spacing:.07em;color:var(--g2);text-transform:uppercase}
-.profile .um{position:absolute;right:14px;font:500 9px var(--mono);letter-spacing:.07em;color:var(--red)}
+.profile .um{position:absolute;right:14px;font:500 9px var(--mono);letter-spacing:.07em;color:var(--acc)}
 .dright{display:grid;gap:16px;align-content:start}
 .hero .top{display:flex;justify-content:space-between;align-items:center}
 .hero .big{display:flex;align-items:baseline;gap:8px;margin-top:8px}
@@ -246,13 +246,13 @@ svg{display:block}
 .hero .big span{font:400 22px var(--sans);color:var(--g2)}
 .hero .sub{font-size:13px;color:var(--g1);margin-top:6px}
 .scale{position:relative;height:4px;border-radius:2px;background:var(--track);margin:24px 0 8px}
-.scale i{position:absolute;left:0;top:0;height:4px;border-radius:2px;background:var(--red)}
+.scale i{position:absolute;left:0;top:0;height:4px;border-radius:2px;background:var(--acc)}
 .scale u{position:absolute;top:-6px;width:1.5px;height:16px;background:var(--ink);text-decoration:none}
 .sticks{display:flex;justify-content:space-between;font:400 9px var(--mono);color:var(--g1);letter-spacing:.06em;position:relative;height:12px}
 .sticks b{position:absolute;transform:translateX(-50%);font-weight:500;color:var(--ink)}
 .more{margin-top:16px;border-top:1px solid var(--div);padding-top:10px;display:grid;gap:8px}
 .more div{display:flex;gap:9px;font-size:12.5px;color:#3a3a38;align-items:flex-start}
-.more div::before{content:"";flex:none;margin-top:5px;width:6px;height:6px;border-radius:50%;background:var(--c,var(--yel))}
+.more div::before{content:"";flex:none;margin-top:5px;width:6px;height:6px;border-radius:50%;background:var(--c,var(--tint))}
 .tech{display:grid;grid-template-columns:1fr 1fr}
 .tech>div{padding:16px 24px;border-top:1px solid var(--div)}
 .tech>div:nth-child(-n+2){border-top:0}
@@ -368,7 +368,7 @@ svg{display:block}
 .tech>div{transition:background .2s}.tech>div:hover{background:#fafaf8}
 .arow.sel{box-shadow:none;background:transparent}.arow.sel .sd{box-shadow:0 0 0 3px rgba(20,20,20,.14)}
 .arow.sel .t{font-weight:500}
-.rk.sel .id{color:var(--ink);font-weight:600}.rk.sel{background:#f7f7f4;box-shadow:-10px 0 0 #f7f7f4,10px 0 0 #f7f7f4}
+.rk.sel .id{color:var(--acc)}.rk.sel{background:#f7f7f4;box-shadow:-10px 0 0 #f7f7f4,10px 0 0 #f7f7f4}
 .rk .tk{position:absolute;top:2px;transform:translateX(-50%);font-size:9px;color:#707069}
 .menu kbd,.xmenu kbd,#presenter kbd{font:500 9px var(--mono);background:var(--field);border-radius:4px;padding:2px 5px;margin-left:8px;color:var(--g1)}
 .menu button{display:flex;justify-content:space-between;align-items:center}
@@ -592,7 +592,6 @@ html.clean #viewer .ovl,html.clean #viewer .vtop,html.clean #viewer .vnote,html.
 .kpi .row-chips{gap:4px;flex-wrap:nowrap}.kpi .pillx{padding:0 7px;letter-spacing:.04em;white-space:nowrap}
 
 /* Estado por línea (como en Figma): nombre + km/apoyos, barra de progreso, % y avisos */
-.rows3.r3{grid-template-columns:minmax(0,1.05fr) minmax(0,1.15fr) minmax(0,.95fr)}
 .est{padding-bottom:12px}.est .eyebrow{margin-bottom:6px}
 .erow{display:grid;grid-template-columns:minmax(0,172px) minmax(48px,1fr) 38px 84px;align-items:center;gap:14px;padding:13px 0;border-top:1px solid var(--div)}
 .est .eyebrow + .erow{border-top:0}
@@ -601,10 +600,14 @@ html.clean #viewer .ovl,html.clean #viewer .vtop,html.clean #viewer .vnote,html.
 .est .meter{height:6px;margin:0;border-radius:3px}.est .meter i{border-radius:3px}
 .erow .ep{font:400 13px var(--mono);text-align:right}
 .erow .ea{display:inline-flex;align-items:center;gap:8px;font-size:15px;white-space:nowrap}.erow .ea i{width:8px;height:8px;border-radius:50%;display:block;flex:none}
-@media (max-width:1180px){.rows3.r3{grid-template-columns:minmax(0,1fr)}}
 
 /* cabecera: el texto de la miga comparte línea base con el logo (la flecha de volver no se mueve) */
 .crumb{position:relative;top:3px}.crumb .back{position:relative;top:-3px}
+
+/* Ranking a ancho completo (demo): dos columnas de 4 filas; justo debajo, Estado por línea + Evolución como en el diseño */
+.rank1{margin-top:16px}
+.rkcols{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);column-gap:56px}
+@media (max-width:1180px){.rkcols{grid-template-columns:minmax(0,1fr)}}
 
 </style>
 </head>
@@ -917,7 +920,7 @@ H;1;TIPO TORRE 2;12.1;9.2;22.3;352`;
         <label class="search">${MX.ic.search}<input type="text" placeholder="Buscar apoyo o coordenada" aria-label="Buscar apoyo" autocomplete="off"><div class="sugg"></div></label>
         <div style="position:relative"><button class="avatar" aria-label="Cuenta"><svg viewBox="0 0 32 32" aria-hidden="true"><use href="#mx-logo"/></svg></button>
           <div class="menu"><div class="who">Olaia Irigoien<small>testuser@mailuna.com</small></div>
-            <button data-act="orders">Órdenes de trabajo</button><button data-act="present">${document.body.classList.contains('present') ? 'Salir del modo presentación' : 'Modo presentación'} <kbd>P</kbd></button>
+            <button data-act="orders">Órdenes de trabajo</button><button data-act="csv">Cargar informe CSV</button><button data-act="present">${document.body.classList.contains('present') ? 'Salir del modo presentación' : 'Modo presentación'} <kbd>P</kbd></button>
             <button data-act="big">${big ? 'Volver a los 8 apoyos reales' : 'Informe grande · 40 apoyos'} <kbd>M</kbd></button>
             <button data-act="kbd">Atajos de teclado <kbd>?</kbd></button><button data-act="reset">Reiniciar demo <kbd>R</kbd></button><button data-act="logout">Cerrar sesión</button></div></div>
       </div></header>`;
@@ -963,6 +966,7 @@ H;1;TIPO TORRE 2;12.1;9.2;22.3;352`;
     const act = (k, fn) => { const b = menu.querySelector(`[data-act="${k}"]`); if (b) b.addEventListener('click', () => { menu.classList.remove('on'); fn(); }); };
     act('logout', () => { try { sessionStorage.removeItem('mx.auth'); } catch (e) {} MX.go('#/login'); });
     act('orders', () => MX.go('#/ordenes'));
+    act('csv', () => MX.pickCSV());
     act('present', () => MX.present.toggle());
     act('big', () => MX.present.big());
     act('kbd', () => MX.present.kbd());
@@ -1220,7 +1224,7 @@ void main(){float r=length(gl_PointCoord-vec2(0.5))*2.0;float a=(1.0-smoothstep(
   const W = 923, H = 568;
   const PATH = [[92, 452], [196, 418], [298, 396], [404, 352], [506, 336], [606, 292], [712, 262], [822, 214]];
   const OFF = { default: [8, -19], A: [-4, 10], G: [18, -36], H: [11, 6] };
-  const ACC = '#e13e2c', TINT = '#eebc63', OK = '#e8e8e5', DK = '#0b0c0c';
+  const ACC = '#ff6a2b', TINT = '#ffad8a', OK = '#e8e8e5', DK = '#0b0c0c';
 
   // posiciones de N apoyos a lo largo de la línea (el CSV de ejemplo usa las 8 posiciones del diseño)
   function place(n) {
@@ -1313,7 +1317,7 @@ void main(){float r=length(gl_PointCoord-vec2(0.5))*2.0;float a=(1.0-smoothstep(
    Mapa, lista y ranking comparten la selección de apoyo. Todos los charts tienen hover. */
 (function () {
   const MX = (window.MX = window.MX || {});
-  const ACC = '#e13e2c', TINT = '#eebc63', OKC = '#d6d6d1', GRN = '#a9de76';
+  const ACC = '#ff6a2b', TINT = '#ffad8a', OKC = '#d6d6d1', RED = '#e13e2c', YEL = '#eebc63', GRN = '#a9de76';   // RED/YEL/GRN solo en «Avisos por tipo»
   const MONTHS_FULL = ['octubre', 'noviembre', 'diciembre', 'enero', 'febrero', 'marzo', 'abril', 'mayo', 'junio', 'julio', 'agosto', 'septiembre'];
   const stCls = a => (a.st === 2 ? 'a' : a.st === 1 ? 'v' : 'o');
   const stTxt = a => (a.st === 2 ? 'Actuar' : a.st === 1 ? 'Vigilar' : 'Sin incidencias');
@@ -1426,7 +1430,7 @@ void main(){float r=length(gl_PointCoord-vec2(0.5))*2.0;float a=(1.0-smoothstep(
     </section>`;
     const head = `<div class="pghead"><div><h1>Estado de la red</h1><p>${M.line} · ${D.n} ${MX.pl(D.n, 'apoyo', 'apoyos')} · ${M.demo ? 'último vuelo ' + M.flight : 'informe ' + MX.esc(MX.state.name)}</p></div>
       <div class="acts"><div class="xwrap"><button class="btn light" id="b-export">${MX.ic.down}<span>Exportar informe</span></button><div class="xmenu" id="xmenu"><button data-x="pdf"><b>Informe PDF</b><small>Resumen imprimible del análisis</small></button><button data-x="csv"><b>Datos CSV</b><small>Estado por apoyo, para Excel</small></button></div></div>
-      <button class="btn dark" id="b-load">Cargar CSV</button></div></div>`;
+      <button class="btn dark" id="b-plan">Planificar vuelo</button></div></div>`;
     /* --- requieren atención (arriba: lo primero que hay que decidir) --- */
     const att = (expanded ? D.attention : D.attention.slice(0, 5));
     const rowA = a => { const m = a.issues[0]; return `<div class="arow" role="link" tabindex="0" data-id="${MX.esc(a.id)}" data-cats="${a.issues.map(i => i.c).join(' ')}"><span class="sd ${stCls(a)}" role="img" aria-label="${a.st === 2 ? 'Actuar' : 'Vigilar'}"></span>
@@ -1443,12 +1447,12 @@ void main(){float r=length(gl_PointCoord-vec2(0.5))*2.0;float a=(1.0-smoothstep(
           <div class="mapramp"><span>Altura de vegetación (LiDAR)</span><b></b><div><span>0</span><span>10</span><span>20 m</span></div></div></div></div>`;
     /* --- avisos por tipo --- */
     const tr = (k) => { const t = T[k], n = t.a + t.v, ok = Math.max(0, D.n - n);
-      const tip = TR(t.a ? ACC : n ? TINT : GRN, `${MX.CAT[k]} · ${n} ${n === 1 ? 'aviso' : 'avisos'}`, `${t.a} actuar · ${t.v} vigilar · ${ok} sin aviso`, n ? 'Apoyos: ' + ids(k) : `Los ${D.n} apoyos sin incidencias`);
+      const tip = TR(t.a ? RED : n ? YEL : GRN, `${MX.CAT[k]} · ${n} ${n === 1 ? 'aviso' : 'avisos'}`, `${t.a} actuar · ${t.v} vigilar · ${ok} sin aviso`, n ? 'Apoyos: ' + ids(k) : `Los ${D.n} apoyos sin incidencias`);
       return `<div class="brow" role="button" tabindex="0" data-cat="${k}" data-tip="${A(tip)}"><div class="l"><span class="nm">${MX.CAT[k]} ${MX.ic.chev}</span>
         <span class="cn">${t.v ? `<span class="cnt v">${t.v}</span>` : ''}${t.a ? `<span class="cnt a">${t.a}</span>` : ''}</span></div>
-        <div class="bar">${t.a ? `<i style="flex:${t.a};background:${ACC}"></i>` : ''}${t.v ? `<i style="flex:${t.v};background:${TINT}"></i>` : ''}${ok ? `<i style="flex:${ok};background:${GRN}"></i>` : ''}</div></div>`; };
+        <div class="bar">${t.a ? `<i style="flex:${t.a};background:${RED}"></i>` : ''}${t.v ? `<i style="flex:${t.v};background:${YEL}"></i>` : ''}${ok ? `<i style="flex:${ok};background:${GRN}"></i>` : ''}</div></div>`; };
     const tipo = `<div class="card" id="c-tipo"><div class="eyebrow" style="margin-bottom:12px">Avisos por tipo</div><div class="bars">${['veg', 'dev', 'earth', 'conf'].map(tr).join('')}</div>
-        <div class="bleg"><div><span><i style="background:${ACC}"></i>Actuar</span><span><i style="background:${TINT}"></i>Vigilar</span><span><i style="background:${GRN}"></i>Sin aviso</span></div></div></div>`;
+        <div class="bleg"><div><span><i style="background:${RED}"></i>Actuar</span><span><i style="background:${YEL}"></i>Vigilar</span><span><i style="background:${GRN}"></i>Sin aviso</span></div></div></div>`;
     const FL = MX.flights(D), done = FL.filter(f => f.estado === 'Completado'), nextF = FL.filter(f => f.estado === 'Hoy' || f.estado === 'Programado'), lastF = done[done.length - 1];
     const vi = (lab, f, sub, last) => f ? `<a class="vitem" href="#/vuelos"${last ? ' style="margin-bottom:0"' : ''}><small>${lab} · ${f.date}</small><b>${MX.esc(f.line)}</b><span>${sub}</span></a>` : '';
     const vuelos = `<div class="card vuelos" id="c-vuelos"><div class="hd"><span class="eyebrow">Vuelos</span><a class="link" href="#/vuelos">Ver calendario ${MX.ic.chev}</a></div>
@@ -1456,13 +1460,15 @@ void main(){float r=length(gl_PointCoord-vec2(0.5))*2.0;float a=(1.0-smoothstep(
         ${nextF.slice(0, 2).map((f, i, a) => vi(f.estado === 'Hoy' ? 'Hoy' : i ? 'Programado' : 'Próximo', f, MX.esc(f.motivo || 'Inspección periódica') + ' · ' + MX.esc(f.sensor), i === a.length - 1)).join('')}</div>`;
     /* --- ranking --- */
     const MAXG = 10;
-    const rk = D.rank.slice(0, 8).map(a => { const c = a.gap >= D.TH.vegCrit ? ACC : a.gap >= D.TH.vegWarn ? TINT : OKC;
+    const rkA = D.rank.slice(0, 8).map(a => { const c = a.gap >= D.TH.vegCrit ? ACC : a.gap >= D.TH.vegWarn ? TINT : OKC;
       const tip = TR(stCol(a), `${a.id} · ${MX.cfgLabel(a.cfg)}`, `Reducción ${MX.fm(a.gap)} m (${MX.fm(a.libre)} → ${MX.fm(a.veg)} m)`, a.gap >= D.TH.vegCrit ? 'Supera el umbral de actuación' : a.gap >= D.TH.vegWarn ? 'Supera el umbral de aviso' : 'Por debajo del umbral de aviso');
       return `<div class="rk" role="link" tabindex="0" aria-label="Apoyo ${MX.esc(a.id)}, reducción ${MX.fm(a.gap)} m" data-open="${MX.esc(a.id)}" data-tip="${A(tip)}"><span class="id">${MX.esc(a.id)}</span><span class="cf">${MX.cfgLabel(a.cfg)}</span>
-        <div class="tr">${a.gap > 0 ? `<i style="width:${Math.max(1.5, Math.min(100, a.gap / MAXG * 100))}%;background:${c}"></i>` : ''}<u style="left:${D.TH.vegWarn / MAXG * 100}%"></u><u style="left:${D.TH.vegCrit / MAXG * 100}%"></u></div><span class="vl" style="color:${a.gap >= D.TH.vegWarn ? '#141414' : '#707069'}">${a.gap > 0 ? '−' : ''}${MX.fm(a.gap)} m</span></div>`; }).join('');
+        <div class="tr">${a.gap > 0 ? `<i style="width:${Math.max(1.5, Math.min(100, a.gap / MAXG * 100))}%;background:${c}"></i>` : ''}<u style="left:${D.TH.vegWarn / MAXG * 100}%"></u><u style="left:${D.TH.vegCrit / MAXG * 100}%"></u></div><span class="vl" style="color:${a.gap >= D.TH.vegWarn ? '#141414' : '#707069'}">${a.gap > 0 ? '−' : ''}${MX.fm(a.gap)} m</span></div>`; });
+    const rkHead = `<div class="rk" style="height:22px;margin-top:6px"><span></span><span></span><div class="tr" style="background:none"><span class="eyebrow tk" style="left:${D.TH.vegWarn / MAXG * 100}%">${D.TH.vegWarn} m</span><span class="eyebrow tk" style="left:${D.TH.vegCrit / MAXG * 100}%">${D.TH.vegCrit} m</span></div><span></span></div>`;
+    const rankBody = M.net ? `<div class="rkcols"><div>${rkHead}${rkA.slice(0, 4).join('')}</div><div>${rkHead}${rkA.slice(4).join('')}</div></div>` : rkHead + rkA.join('');
     const rank = `<div class="card" id="c-rank"><div class="top"><span class="eyebrow">Mayor reducción de altura libre por vegetación</span>
         <div class="leg"><span><i style="background:${OKC}"></i>Sin aviso &lt; ${D.TH.vegWarn} m</span><span><i style="background:${TINT}"></i>Vigilar ≥ ${D.TH.vegWarn} m</span><span><i style="background:${ACC}"></i>Actuar ≥ ${D.TH.vegCrit} m</span></div></div>
-        <div class="rk" style="height:22px;margin-top:6px"><span></span><span></span><div class="tr" style="background:none"><span class="eyebrow tk" style="left:${D.TH.vegWarn / MAXG * 100}%">${D.TH.vegWarn} m</span><span class="eyebrow tk" style="left:${D.TH.vegCrit / MAXG * 100}%">${D.TH.vegCrit} m</span></div><span></span></div>${rk}</div>`;
+${rankBody}</div>`;
     /* --- estado por línea (demo, como en Figma) --- */
     const LS = M.net ? MX.lineStatus(D) : null;
     const estC = LS ? `<div class="card est" id="c-est"><div class="eyebrow">Estado por línea</div>${LS.map(l => { const c = l.av >= 8 ? ACC : TINT;
@@ -1474,9 +1480,20 @@ void main(){float r=length(gl_PointCoord-vec2(0.5))*2.0;float a=(1.0-smoothstep(
           return `<div class="col" data-tip="${A(tip)}"><em style="${i === 11 ? 'color:#141414' : ''}">${v}</em><i style="height:${Math.max(6, v / mx * 150)}px;background:${c}"></i></div>`; }).join('')}</div>
         <div class="ax"><span>OCT</span><span>MAR</span><b>HOY</b></div></div>`;
     return `<div class="shell">${MX.header('panel')}${head}${kpis}<section class="grid main">${map}<div class="col">${tipo}${vuelos}</div></section>
-      <section class="grid rows2">${attC}${cal}</section><section class="grid rows3${estC ? ' r3' : ''}">${rank}${estC}${evo}</section></div>
-      <input type="file" id="f-csv" accept=".csv,text/csv" hidden>`;
+      <section class="grid rows2">${attC}${cal}</section>${estC ? `<section class="grid rank1">${rank}</section><section class="grid rows3">${estC}${evo}</section>` : `<section class="grid rows3">${rank}${evo}</section>`}</div>`;
   }
+
+  /* «Cargar informe CSV»: ahora vive en el menú de la cuenta, así sirve desde cualquier pantalla */
+  MX.pickCSV = function () {
+    const f = document.createElement('input'); f.type = 'file'; f.accept = '.csv,text/csv';
+    f.onchange = () => {
+      const file = f.files[0]; if (!file) return; const rd = new FileReader();
+      rd.onload = () => { try { MX.load(rd.result, file.name, false); MX.state.big = false; selId = null; expanded = false; if (location.hash.indexOf('#/panel') === 0) MX.panel.render(); else MX.go('#/panel'); const k = MX.state.skipped; MX.toast(`Informe cargado · ${MX.state.D.n} ${MX.pl(MX.state.D.n, 'apoyo', 'apoyos')}${k ? ` · ${k} ${MX.pl(k, 'fila omitida', 'filas omitidas')}` : ''}`); } catch (e) { MX.toast(e.message); } };
+      rd.onerror = () => MX.toast('No se pudo leer el archivo');
+      rd.readAsText(file);
+    };
+    f.click();
+  };
 
   MX.panel = {
     render() {
@@ -1504,14 +1521,7 @@ void main(){float r=length(gl_PointCoord-vec2(0.5))*2.0;float a=(1.0-smoothstep(
       const xb = root.querySelector('#b-export'), xm = root.querySelector('#xmenu');
       xb.addEventListener('click', e => { e.stopPropagation(); xm.classList.toggle('on'); });
       xm.querySelectorAll('[data-x]').forEach(b => b.addEventListener('click', () => { xm.classList.remove('on'); b.dataset.x === 'csv' ? exportCSV() : MX.present.printReport(); }));
-      const f = root.querySelector('#f-csv');
-      root.querySelector('#b-load').addEventListener('click', () => f.click());
-      f.addEventListener('change', () => {
-        const file = f.files[0]; if (!file) return; const rd = new FileReader();
-        rd.onload = () => { try { MX.load(rd.result, file.name, false); MX.state.big = false; selId = null; expanded = false; MX.panel.render(); const k = MX.state.skipped; MX.toast(`Informe cargado · ${MX.state.D.n} ${MX.pl(MX.state.D.n, 'apoyo', 'apoyos')}${k ? ` · ${k} ${MX.pl(k, 'fila omitida', 'filas omitidas')}` : ''}`); } catch (e) { MX.toast(e.message); } };
-        rd.onerror = () => MX.toast('No se pudo leer el archivo');
-        rd.readAsText(file); f.value = '';
-      });
+      root.querySelector('#b-plan').addEventListener('click', () => MX.vuelos.plan());
     },
     select(id) { setSel(id, 'ext'); },
   };
@@ -1522,7 +1532,7 @@ void main(){float r=length(gl_PointCoord-vec2(0.5))*2.0;float a=(1.0-smoothstep(
 /* Mailuna · pantallas Vuelos y Órdenes (todo coherente con el CSV y con el histórico de avisos) */
 (function () {
   const MX = (window.MX = window.MX || {});
-  const ACC = '#e13e2c', TINT = '#eebc63', OKC = '#d6d6d1', HOY = '#ff6a2b', PROG = '#ffad8a';   // ACC/TINT = Actuar/Vigilar · HOY/PROG = estados de vuelo y orden
+  const ACC = '#ff6a2b', TINT = '#ffad8a', OKC = '#d6d6d1', HOY = '#ff6a2b', PROG = '#ffad8a';   // ACC/TINT = Actuar/Vigilar · HOY/PROG = estados de vuelo y orden
   const A = MX.tipAttr, TR = MX.tipRow, esc = MX.esc;
 
   /* ---------- modal genérico ---------- */
@@ -1587,7 +1597,7 @@ void main(){float r=length(gl_PointCoord-vec2(0.5))*2.0;float a=(1.0-smoothstep(
         c.querySelector('#m-ok').onclick = () => {
           const iso = c.querySelector('#p-date').value; if (!iso) return MX.toast('Elige una fecha');
           MX.gest.flights.push({ iso, date: dmy(iso), line: c.querySelector('#p-line').value, motivo: c.querySelector('#p-mot').value }); MX.saveGest();
-          const d = new Date(iso); calY = d.getFullYear(); calM = d.getMonth(); selDate = iso; MX.modalClose(); MX.vuelos.render(); MX.toast('Vuelo programado · ' + dmy(iso));
+          const d = new Date(iso); calY = d.getFullYear(); calM = d.getMonth(); selDate = iso; MX.modalClose(); MX.route(); MX.toast('Vuelo programado · ' + dmy(iso));
         };
       });
     },
@@ -1643,7 +1653,7 @@ void main(){float r=length(gl_PointCoord-vec2(0.5))*2.0;float a=(1.0-smoothstep(
 (function () {
   const MX = (window.MX = window.MX || {});
   const esc = MX.esc, fm = MX.fm;
-  const ACC = '#e13e2c', TINT = '#eebc63';
+  const ACC = '#ff6a2b', TINT = '#ffad8a';
   const stT = a => (a.st === 2 ? 'Actuar' : a.st === 1 ? 'Vigilar' : 'Sin incidencias'), stC = a => (a.st === 2 ? ACC : a.st === 1 ? TINT : '#c9c9c4');
 
   /* ---------- captura 3D de un apoyo (render fuera de pantalla con la misma escena del visor) ---------- */
@@ -1747,7 +1757,7 @@ void main(){float r=length(gl_PointCoord-vec2(0.5))*2.0;float a=(1.0-smoothstep(
    interactivo con los apoyos vecinos y tarjetas con hover. */
 (function () {
   const MX = (window.MX = window.MX || {});
-  const ACC = '#e13e2c', TINT = '#eebc63', OKC = '#d6d6d1';
+  const ACC = '#ff6a2b', TINT = '#ffad8a', OKC = '#d6d6d1';
   const fm = (n, d) => MX.fm(n, d), A = MX.tipAttr, TR = MX.tipRow;
   let view = null, curId = null, keyH = null, roProf = null;
   const stTxt = a => (a.st === 2 ? 'Actuar' : a.st === 1 ? 'Vigilar' : 'Sin incidencias');
